@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>block과 inline</title>
+    <style>
+      button {
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 블록 -->
+    <div style="background-color: antiquewhite">전 div입니다</div>
+    <p style="background-color: antiquewhite">저는 p태그에요</p>
+    <ul style="background-color: aqua">
+      <li style="background-color: aquamarine">li태그입니다.</li>
+      <li style="background-color: violet">li태그입니다.</li>
+    </ul>
+
+    <!-- 인라인 -->
+    <a href="#">a태그입니다</a>
+    <span>나는span</span>
+    <span>span</span>
+    <span>span</span>
+    <span>span</span>
+    <span>span</span>
+    <!-- 인라인 블록 -->
+    <br />
+    <button>button</button>
+    <button>button</button>
+    <button>button</button>
+    <button>button</button>
+    <button>button</button>
+    <button>button</button>
+
+    <!-- O -->
+    <div>
+      블록요소 안
+      <span>인라인요소 중첩 가능</span>
+    </div>
+
+    <!-- X -->
+    <span>
+      인라인요소 안
+      <div>블록요소 중첩 불가능</div>
+    </span>
+    <br />
+    <div style="background-color: antiquewhite">전 div입니다</div>
+    <div style="background-color: blue">전 div입니다</div>
+    <p>
+      이건
+      <span style="background-color: red">span</span> 태그입니다.
+    </p>
+    <p>
+      이런식으로
+      <span style="font-weight: bold">사용</span> 합니다.
+    </p>
+  </body>
+</html>
