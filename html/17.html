@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      form {
+        background-color: antiquewhite;
+      }
+    </style>
+    <title>form</title>
+  </head>
+  <body>
+    <h1>로그인</h1>
+    <form action="" method="GET" autocomplete="off">
+      <label for="id">아이디:</label>
+      <input
+        type="text"
+        id="id"
+        name="id"
+        placeholder="아이디를 입력하세요"
+        required
+      /><br />
+      <input type="email" autocomplete="email" disabled /><br />
+      <label for="pw">비밀번호:</label>
+      <input
+        type="password"
+        id="pw"
+        name="pw"
+        placeholder="특수문자 및 대문자 포함해주세요"
+      /><br />
+
+      <label for="username">닉네임:</label>
+      <input type="text" value="rosy" id="username" name="username" disabled />
+      <br />
+      <input type="submit" />
+    </form>
+  </body>
+</html>
