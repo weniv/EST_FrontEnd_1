@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>스타일 적용된 Details와 Summary 예제</title>
+    <style>
+      details {
+        margin-bottom: 1em;
+        padding: 1em;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      summary {
+        font-weight: bold;
+        cursor: pointer;
+      }
+      summary::marker {
+        color: #007bff;
+      }
+      details[open] summary::marker {
+        color: #ff5733;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>자주 묻는 질문들</h1>
+    <details open>
+      <summary>HTML이 뭔가요?</summary>
+      <p>
+        HTML은 HyperText Markup Language의 약자로, 웹 페이지를 만드는 표준
+        언어입니다.
+      </p>
+    </details>
+    <details>
+      <summary>CSS가 뭔가요?</summary>
+      <p>
+        CSS는 Cascading Style Sheets의 약자로, 웹 페이지를 스타일링하고
+        레이아웃을 구성하는 데 사용됩니다.
+      </p>
+    </details>
+    <details>
+      <summary>JavaScript가 뭔가요?</summary>
+      <p>
+        JavaScript는 웹 브라우저 내에서 상호작용 효과를 생성하기 위해 자주
+        사용되는 프로그래밍 언어입니다.
+      </p>
+    </details>
+  </body>
+</html>

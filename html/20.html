@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+  </head>
+  <body>
+    <form action="">
+      <fieldset>
+        <legend>브라우저</legend>
+        <label for="browser">사용하는 브라우저를 선택하세요</label>
+        <input list="browsers" id="browser" />
+        <datalist id="browsers">
+          <option value="Chrome"></option>
+          <option value="Firefox"></option>
+          <option value="Safari"></option>
+          <option value="Edge"></option>
+          <option value="IE"></option>
+          <option value="male"></option>
+          <option value="female"></option>
+        </datalist>
+      </fieldset>
+
+      <fieldset>
+        <legend>성별</legend>
+        <label for="male">남성</label>
+        <input type="radio" name="gender" value="male" id="male" />
+        <label for="female">여성</label>
+        <input type="radio" name="gender" value="female" id="female" />
+      </fieldset>
+      <fieldset>
+        <legend>사용 기술</legend>
+        <label for="html">HTML</label>
+        <input id="html" type="checkbox" name="html" />
+        <label for="css">CSS</label>
+        <input id="css" type="checkbox" name="css" />
+        <label for="js">JS</label>
+        <input id="js" type="checkbox" name="js" />
+      </fieldset>
+    </form>
+  </body>
+</html>

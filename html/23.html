@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
+    <title>form 모달 실습</title>
+  </head>
+  <body>
+    <div>
+      <header>
+        <h2>로그인 또는 회원가입</h2>
+        <button>
+          <img src="./src/login/close.png" alt="" />
+          <span class="sr-only">닫기 버튼</span>
+        </button>
+      </header>
+      <section>
+        <h3 class="sr-only">로그인</h3>
+        <p>위니브에서 여러분의 궁금증을 해결하세요! :)</p>
+        <form action="" method="post">
+          <input type="text" placeholder="아이디" />
+          <input type="password" placeholder="비밀번호" />
+          <input type="checkbox" id="keepLoggedIn" />
+          <label for="keepLoggedIn">로그인 상태 유지</label>
+          <button type="submit">로그인</button>
+        </form>
+        <ul>
+          <li><a href="/">회원가입</a></li>
+          <li><a href="/">아이디/비밀번호 찾기</a></li>
+        </ul>
+      </section>
+      <span>또는</span>
+      <section>
+        <h3 class="sr-only">소셜 계정으로 로그인</h3>
+        <ul>
+          <li>
+            <!-- button태그로 작업하셔도 됩니다 -->
+            <a href="/">
+              <img src="./src/login/Google__G__Logo 1.png" alt="" />
+              <span>구글 계정으로 로그인</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="./src/login/facebook.png" alt="" />
+              <span>페이스북 계정으로 로그인</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="./src/login/naver-logo.png" alt="" />
+              <span>네이버 계정으로 로그인</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <img src="./src/login/message-circle.png" alt="" />
+              <span>카카오톡 계정으로 로그인</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </body>
+</html>
