@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            p {
+                background-color: aquamarine;
+                width: 500px;
+
+                word-break: break-all;
+                word-break: keep-all;
+
+                /* 1줄 말줄임처리 */
+                /* white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis; */
+
+                /* 여러줄 말줄임 처리 */
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                -webkit-line-clamp: 5;
+
+                font-style: italic;
+            }
+        </style>
+    </head>
+    <body>
+        <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias officia saepe deserunt accusantium maiores nobis odit soluta facere nisi asperiores eveniet repellat enim itaque architecto,
+            cupiditate excepturi sit ut. At! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Possimus ipsa laudantium enim blanditiis excepturi ut iste cum fugit deleniti repellat optio
+            officiis in a aspernatur earum debitis animi, corrupti deserunt?
+        </p>
+    </body>
+</html>

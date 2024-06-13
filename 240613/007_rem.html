@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            html {
+                font-size: 8px;
+            }
+
+            .container {
+                font-size: 10px;
+                background-color: aquamarine;
+            }
+
+            .container div {
+                border: 1px solid black;
+            }
+
+            .item1 {
+                /* 부모요소의 폰트사이즈: 10px
+                10px * 2 = 20px */
+                font-size: 2em;
+            }
+
+            .item2 {
+                /* root html 기본 폰트사이즈: 16px
+                16px * 2 = 32px */
+                font-size: 2rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="item1">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio sapiente beatae libero. Dolorem dolorum, labore corrupti impedit ducimus facilis enim aut laudantium? Itaque
+                excepturi dolor obcaecati eveniet enim porro nisi.
+            </div>
+            <div class="item2">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur mollitia aut, optio ut doloribus voluptas corporis explicabo quidem iure fugit debitis quisquam! Blanditiis soluta
+                odit eaque vitae accusamus. At, saepe.
+            </div>
+        </div>
+    </body>
+</html>

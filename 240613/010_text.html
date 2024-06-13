@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            p {
+                width: 300px;
+                background-color: aquamarine;
+                /* text-align: left; */
+                /* text-align: right; */
+                /* text-align: center; */
+                /* text-align: justify; */
+                text-align: start;
+                text-align: end;
+            }
+
+            span {
+                font-size: 50px;
+                border: solid 1px black;
+                line-height: 80px;
+            }
+            .baseline {
+                vertical-align: baseline;
+            }
+            .sub {
+                vertical-align: sub;
+            }
+            .super {
+                vertical-align: super;
+            }
+            .text-top {
+                vertical-align: text-top;
+            }
+            .text-bottom {
+                vertical-align: text-bottom;
+            }
+            .middle {
+                vertical-align: middle;
+            }
+        </style>
+    </head>
+    <body>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto, praesentium laudantium. Libero, consectetur! Necessitatibus unde voluptates labore aliquam veritatis quaerat quis at,
+            repellendus quisquam deleniti? Sunt harum saepe eveniet quo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, accusamus beatae architecto natus praesentium neque esse
+            veritatis sint, accusantium labore obcaecati delectus sed aliquam eveniet quae nostrum ut vel laborum.
+        </p>
+
+        <span>부모요소<span class="baseline">baseline</span></span
+        ><br />
+        <span>부모요소<span class="sub">sub</span></span
+        ><br />
+        <span>부모요소<span class="super">super</span></span
+        ><br />
+        <span>부모요소<span class="text-top">text-top</span></span
+        ><br />
+        <span>부모요소<span class="text-bottom">text-bottom</span></span
+        ><br />
+        <span>부모요소<span class="middle">middle</span></span>
+    </body>
+</html>
