@@ -1,0 +1,26 @@
+/* import 구글 폰트 삽입 */
+@import url("https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Nanum+Brush+Script&display=swap");
+
+/* font-face 눈누 폰트 삽입 */
+@font-face {
+    font-family: "Cafe24Meongi-W-v1.0";
+    src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Meongi-W-v1.0.woff2") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1 {
+    font-family: "Nanum Brush Script", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h2 {
+    font-family: "Do Hyeon", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+strong {
+    font-family: "Cafe24Meongi-W-v1.0";
+}

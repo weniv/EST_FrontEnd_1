@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            .key {
+                color: hotpink;
+            }
+
+            /* #RRGGBB의 구조하 */
+            /* 각각의 자릿수를 0부터 f까지의 16진수로 표현 */
+            .code {
+                /* 흰색 */
+                /* color: #ffffff;  #fff*/
+                /* 검은색 */
+                /* color: #000000; #000 */
+            }
+
+            /* 레드, 그린, 블루를 0부터 255까지의 정수값으로 나타냄 */
+            .rgb {
+                /* color: rgb(255, 0, 0); */
+                /* color: rgb(0, 255, 0); */
+                color: rgb(0, 0, 255);
+            }
+
+            .rgba {
+                color: rgba(0, 0, 255, 0.3);
+            }
+
+            .trans {
+                color: transparent;
+            }
+
+            div {
+                color: aqua;
+            }
+
+            p {
+                border: 1px solid currentColor;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <p class="key">안녕하세요</p>
+            <p class="code">안녕하세요</p>
+            <p class="rgb">안녕하세요</p>
+            <p class="rgba">안녕하세요</p>
+            <p class="trans">안녕하세요</p>
+        </div>
+    </body>
+</html>
