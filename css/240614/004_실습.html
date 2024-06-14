@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            span {
+                padding: 20px;
+                display: inline-block;
+            }
+
+            div.box :nth-child(1) {
+                background-color: red;
+            }
+            div.box :nth-child(2) {
+                background-color: orange;
+            }
+            div.box :nth-child(3) {
+                background-color: yellow;
+            }
+            div.box :nth-child(4) {
+                background-color: greenyellow;
+            }
+            div.box :nth-child(5) {
+                background-color: royalblue;
+            }
+            div.box :nth-child(6) {
+                background-color: blue;
+            }
+            div.box :nth-child(7) {
+                background-color: blueviolet;
+            }
+
+            div.box span:nth-child(even) {
+                color: white;
+            }
+
+            div.box :first-child,
+            div.box :last-child {
+                border: 15px solid black;
+            }
+
+            li:first-child::before {
+                content: "🦊";
+            }
+
+            li:not(:first-child)::before {
+                content: "💙";
+            }
+
+            li::after {
+                content: "강사님";
+                font-size: 10px;
+                color: gray;
+            }
+
+            li:last-child::after {
+                content: "멘토님";
+                font-size: 10px;
+                color: gray;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="box">
+            <span>빨강</span>
+            <span>주황</span>
+            <span>노랑</span>
+            <span>초록</span>
+            <span>파랑</span>
+            <span>남색</span>
+            <span>보라</span>
+        </div>
+
+        <ul>
+            <li>지지</li>
+            <li>로지</li>
+            <li>웨이드</li>
+            <li>하티</li>
+            <li>라이캣</li>
+            <li>개리</li>
+            <li>빙키</li>
+        </ul>
+    </body>
+</html>

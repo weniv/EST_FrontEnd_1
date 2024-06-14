@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            :root {
+                --main-color: rgb(160, 182, 220);
+                --point1-color: red;
+                --point2-color: yellow;
+                --main-font-size: 32px;
+                --btn-padding: 4px 40px;
+            }
+
+            body {
+                color: var(--main-color);
+            }
+
+            button {
+                border: 1px solid var(--main-color);
+                padding: var(--btn-padding);
+                font-size: var(--main-font-size);
+                background-color: #fff;
+                color: var(--main-color);
+            }
+
+            .color1 button {
+                background-color: var(--point1-color);
+            }
+
+            .color2 button {
+                background-color: var(--point2-color);
+            }
+        </style>
+    </head>
+    <body>
+        <p>안녕하세요</p>
+        <button>버튼</button>
+        <div class="color1">
+            <p>안녕하세요</p>
+            <button>버튼</button>
+        </div>
+        <div class="color2">
+            <p>안녕하세요</p>
+            <button>버튼</button>
+        </div>
+    </body>
+</html>

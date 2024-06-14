@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            /* child 방식 > 자손의 순번으로 결정 */
+            div.box1 > h1:nth-child(1) {
+                color: royalblue;
+            }
+
+            div.box1 > :nth-child(2n) {
+                color: brown;
+            }
+
+            /* of-type 방식 > 같은 유형의 태그의 순번*/
+            div.box1 > :nth-of-type(2n) {
+                color: green;
+            }
+
+            div.box2 em,
+            div.box2 span {
+                display: inline-block;
+                border: 1px solid black;
+                padding: 10px;
+            }
+
+            body > :first-child {
+                background-color: #eee;
+            }
+
+            /* body태그의 직계자손일 경우 last-child는 적용이 안됩니다. */
+            body > :last-child {
+                background-color: #eee;
+            }
+
+            div.box2 :nth-of-type(7) {
+                color: red;
+            }
+
+            div.box2 :only-of-type {
+                background-color: lime;
+            }
+
+            div.box2 :not(:first-child) {
+                font-weight: bold;
+            }
+
+            div.box2 :not(:last-child) {
+                text-decoration: underline;
+            }
+
+            /* body 직계자손 중 마지막 요소가 어떤 것인지 알지 못함 > 모든 것을 선택 */
+            /* body > :not(:last-child) {
+                background-color: hotpink;
+            } */
+        </style>
+    </head>
+    <body>
+        <div class="box1">
+            <h1>hello world</h1>
+            <h2>hello world</h2>
+            <h3>hello world</h3>
+            <h1>hello world</h1>
+            <h2>hello world</h2>
+            <h3>hello world</h3>
+            <h1>hello world</h1>
+            <h2>hello world</h2>
+            <h3>hello world</h3>
+        </div>
+        <div class="box2">
+            <span>span</span>
+            <span>span</span>
+            <span>span</span>
+            <span>span</span>
+            <em>em</em>
+            <em>em</em>
+            <em>em</em>
+            <em>em</em>
+            <em>em</em>
+            <em>em</em>
+            <em>em</em>
+            <span>span</span>
+            <span>span</span>
+            <span>span</span>
+        </div>
+    </body>
+</html>

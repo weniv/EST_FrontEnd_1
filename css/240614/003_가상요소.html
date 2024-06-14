@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            p::before {
+                content: "1기 두부 여러분 💙";
+                font-weight: bold;
+                color: hotpink;
+            }
+
+            p::after {
+                content: "🤗🤗🤗";
+            }
+
+            /* img, br, input 태그는 닫는 태그가 없기 때문에 부모가 될 수 없음 > 가상요소를 자식으로 넣어줄 수 없다! */
+            /* img::before {
+                content: "이미지에는 사용할 수 없습니다!";
+            }
+
+            br::before {
+                content: "br태그에는 사용할 수 없습니다!";
+            }
+
+            input::before {
+                content: "인풋에는 사용할 수 없습니다!";
+            } */
+
+            /* 인풋의 스타일링을 적용해줘도 placeholder에는 적용되지 않음! */
+            /* input {
+                color: aquamarine;
+            } */
+
+            input::placeholder {
+                color: aqua;
+            }
+        </style>
+    </head>
+    <body>
+        <p>
+            <strong>안녕하세요</strong><strong>안녕하세요<strong><br>
+            <strong>안녕하세요</strong>
+            <strong>안녕하세요</strong>
+            <strong>안녕하세요</strong>
+        </p>
+
+        <img src="https://media.istockphoto.com/id/523444303/ko/%EC%82%AC%EC%A7%84/%EC%9C%A0%EA%B8%B0-%EB%82%A0%EA%B2%83-soy-%EB%91%90%EB%B6%80.jpg?s=612x612&w=0&k=20&c=NisZIjV2gmJQSdiY6z4QZloHNu-owZpKzxeHyCy45nM=" alt="">
+        <br>
+        <input type="text" placeholder="이름을 적어주세요.">
+    </body>
+</html>

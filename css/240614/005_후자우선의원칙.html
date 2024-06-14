@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            div {
+                width: 100px;
+                height: 100px;
+                background-color: aqua;
+            }
+
+            /* 동일한 선택자에 동일한 속성이 사용되었을 경우엔 후자 우선의 원칙을 따른다 */
+            div {
+                background-color: orange;
+            }
+        </style>
+    </head>
+    <body>
+        <div></div>
+    </body>
+</html>
