@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            div {
+                width: 100px;
+                height: 100px;
+                background-image: url(crying_zeezee.png);
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+
+            div::before {
+                content: "";
+                display: block;
+                background-image: url(./crying_zeezee.png);
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 문맥상 필요한 정보를 제공하지 않고 디자인적 요소일 경우 -->
+        <div></div>
+        <!-- 문맥상 필요한 정보를 제공할 때 -->
+        <img src="crying_zeezee.png" alt="울고 있는 지지 캐릭터" />
+        <!-- 필요한 정보가 중복될때  -->
+        <img src="crying_zeezee.png" alt="" />
+        <span>울고 있는 지지 캐릭터</span>
+    </body>
+</html>

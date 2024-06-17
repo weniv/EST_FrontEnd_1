@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            body {
+                height: 200vh;
+            }
+
+            .box {
+                width: 100px;
+                height: 100px;
+                background-color: rosybrown;
+                opacity: 0.8;
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            .absolute {
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+
+            .parent {
+                position: relative;
+            }
+
+            .static {
+                position: static;
+            }
+
+            .fixed {
+                position: fixed;
+                right: 10px;
+                bottom: 10px;
+            }
+
+            .sticky {
+                position: sticky;
+                top: 10px;
+                left: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="parent">
+            <div class="box static">static</div>
+            <div class="box static">static</div>
+            <div class="box static">static</div>
+            <div class="box static">static</div>
+            <div class="box static">static</div>
+            <div class="box fixed">fixed</div>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis corrupti aliquam voluptatem laboriosam, error quos. Cupiditate, porro molestias ducimus quia totam quisquam placeat fuga
+            in ad. Saepe rem accusamus dignissimos! Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis corrupti aliquam voluptatem laboriosam, error quos. Cupiditate, porro molestias
+            ducimus quia totam quisquam placeat fuga in ad. Saepe rem accusamus dignissimos!
+        </div>
+        <div class="box absolute">absolute</div>
+        <div class="box sticky">sticky</div>
+    </body>
+</html>
