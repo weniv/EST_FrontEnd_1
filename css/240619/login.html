@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>login</title>
+    <style>
+        @font-face {
+            font-family: "SpoqaHanSansNeo-Regular";
+            src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SpoqaHanSansNeo-Regular.woff") format("woff");
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        body {
+            font-family: "SpoqaHanSansNeo-Regular";
+        }
+
+        .a11y-hidden {
+            clip: rect(1px, 1px, 1px, 1px);
+            clip-path: inset(50%);
+            width: 1px;
+            height: 1px;
+            margin: -1px;
+            overflow: hidden;
+            padding: 0;
+            position: absolute;
+        }
+
+        .login-wrap {
+            box-sizing: border-box;
+            height: 140px;
+            width: 350px;
+            border-radius: 5px;
+            border: 1px solid #dbdbdb;
+            padding: 19px 16px 18px;
+        }
+
+        .login-wrap>p {
+            font-size: 12px;
+        }
+
+        .login-wrap .btn-login {
+            background-color: #711bff;
+            color: #fff;
+            border-radius: 4px;
+            margin: 16px 0;
+            display: block;
+            text-align: center;
+            padding: 11px 0;
+        }
+
+        .login-wrap .btn-login img {
+            width: 64px;
+            vertical-align: middle;
+            margin-right: 4px;
+        }
+
+        .login-wrap .btn-login span {
+            vertical-align: middle;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .login-wrap .login-link {
+            color: #767676;
+        }
+
+        .login-wrap .login-link img {
+            width: 16px;
+            height: 16px;
+            margin-right: 4px;
+            vertical-align: middle;
+        }
+
+        .login-wrap .login-link {
+            overflow: hidden;
+        }
+
+        .login-wrap .login-link span {
+            margin: 0 4px;
+        }
+
+        .login-wrap .login-link>div {
+            float: left;
+        }
+
+        .login-wrap .login-link>a {
+            float: right;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="login-wrap">
+        <h2 class="a11y-hidden">로그인</h2>
+        <p>더 편리해진 위니브에 오신 것을 환영합니다.</p>
+        <a href="#" class="btn-login">
+            <img src="./images/weniv-logo.svg" alt="weniv" />
+            <span>로그인</span>
+        </a>
+        <div class="login-link">
+            <div>
+                <a href="#"> <img src="./images/icon-lock.png" alt="" />아이디 </a>
+                <span>|</span>
+                <a href="#">비밀번호찾기</a>
+            </div>
+            <a href="#"> <img src="./images/icon-user.png" alt="" />회원가입 </a>
+        </div>
+    </section>
+</body>
+
+</html>

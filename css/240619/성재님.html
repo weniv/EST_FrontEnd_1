@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <style>
+        section {
+            width: 350px;
+            height: 140px;
+            border-radius: 5px;
+            border: 2px solid #DBDBDB;
+        }
+
+        h2 {
+            display: none;
+        }
+
+        .intro {
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 15px;
+            position: relative;
+            top: 10px;
+            left: 15px;
+            margin-bottom: 20px;
+        }
+
+        #logo {
+            width: 64px;
+            height: 18px;
+        }
+
+        button {
+            background-color: #711BFF;
+            width: 318px;
+            height: 40px;
+            border-radius: 4px;
+            position: relative;
+            left: 15px;
+            margin-bottom: 15px;
+        }
+
+        button span {
+            color: white;
+            font-weight: 500;
+        }
+
+        #lock,
+        #user {
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+            position: relative;
+            left: 15px;
+        }
+
+        a,
+        div span {
+            color: #767676;
+            display: inline-block;
+            position: relative;
+            left: 15px;
+        }
+
+        #user {
+            width: 16px;
+            height: 16px;
+            display: inline-block;
+            position: relative;
+            right: 15px;
+            margin-left: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <h2>로그인</h2> <!--추후 숨김 처리-->
+        <p class="intro">더 편리해진 위니브에 오신 것을 환영합니다.</p>
+        <button>
+            <img src="./src/login/weniv-logo.png" alt="위니브 로고" id="logo" />
+            <span>로그인</span>
+        </button>
+        <!-- <br> -->
+        <!-- <div> -->
+
+        <img src="./src/login/icon-lock.png" id="lock" alt="" />
+        <a href="#">아이디</a>
+        <span> | </span>
+        <a href="#">비밀번호 찾기</a>
+
+
+        <img src="./src/login/icon-user.png" alt="" id="user" class="ui" />
+        <a href="#" class="ui">회원가입</a>
+
+
+
+        <!-- </div> -->
+    </section>
+
+</body>
+
+</html>
