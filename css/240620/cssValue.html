@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 전역 변수 */
+        :root {
+            --personal-color: teal;
+        }
+
+        .bgc_teal {
+            background-color: teal;
+        }
+
+        /* 지역 변수 */
+        ul {
+            padding: 0;
+            --personal-color: royalblue;
+            list-style: none;
+        }
+
+        li {
+            background-color: var(--personal-color);
+        }
+
+        div {
+            width: calc(100% - 60px);
+            margin: auto;
+            max-width: 800px;
+            background-color: var(--personal-color);
+            /* border: 5px solid var(--personal-color); */
+        }
+
+        li {
+            float: left;
+            width: calc((100% - (24px * 2)) / 3);
+            font-size: clamp(1rem, 2.5vw, 2rem);
+        }
+
+        li:not(:first-child) {
+            margin-left: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+    </ul>
+    <!-- <ul>
+        <li class="bgc_teal"><a href="">1</a></li>
+        <li><a href="">2</a></li>
+        <li><a href="">3</a></li>
+    </ul>
+    <div>hello world</div>
+    <article class="bgc_teal">
+
+    </article>
+    <section class="bgc_teal"></section> -->
+
+</body>
+
+</html>
