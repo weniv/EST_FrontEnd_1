@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        @keyframes move-licat {
+            to {
+                background-position: right 0;
+            }
+        }
+
+        @keyframes move {
+            to {
+                transform: translateX(300px);
+            }
+        }
+
+        .licat {
+            width: 168px;
+            height: 200px;
+            background: url(keyframes-licat.png) no-repeat 0 0/ auto 100%;
+            animation: move-licat 1s infinite reverse steps(6);
+        }
+
+        div {
+            width: 168px;
+            height: 200px;
+            background-color: red;
+            animation: move .3s infinite alternate-reverse;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>

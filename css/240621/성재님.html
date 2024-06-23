@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>button</title>
+    <style>
+        button {
+            width: 88px;
+            height: 32px;
+            border-radius: 1px;
+            border: 1px solid #1A202C;
+            background-color: #343F50;
+            color: #CBD5DF;
+            font-weight: 700;
+            font-size: 12px;
+            line-height: 14px;
+            text-align: center;
+            box-shadow: inset 1px 1px rgba(255, 255, 255, 0.1);
+        }
+
+
+        .normal:active {
+            color: #FFFFFF;
+            text-decoration: underline;
+        }
+
+        .normal:disabled {
+            color: #4A5568;
+        }
+
+        .positive {
+            color: #439AFF;
+        }
+
+
+        .positive:active {
+            background-color: #439AFF;
+            border-color: #439AFF;
+            color: #FFFFFF;
+            font-size: 12px;
+            text-decoration: underline;
+        }
+
+        .positive:active {
+            box-shadow: 1px rgba(255, 255, 255, 0.1);
+        }
+
+        .negative {
+            color: #EB5757;
+        }
+
+
+        .negative:active {
+            background-color: #EB5757;
+            border: #EB5757;
+            color: #FFFFFF;
+            text-decoration: underline;
+        }
+
+        .negative:active {
+            box-shadow: 1px rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <button class="normal">Button</button> <!---disabled--->
+    <button class="positive">Yes</button>
+    <button class="negative">Del</button>
+</body>
+
+</html>

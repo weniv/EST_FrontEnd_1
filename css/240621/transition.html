@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: lightcoral;
+            transition: all 2s steps(var(--steps), start) -1s;
+        }
+
+        .box:hover {
+            /* transform: scale(1.5); */
+            display: none;
+        }
+
+        .box.steps-3 {
+            --steps: 3;
+        }
+
+        .box.steps-10 {
+            --steps: 10;
+        }
+
+        .box.steps-20 {
+            --steps: 20;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="box steps-3">3 Steps</div>
+        <div class="box steps-10">10 Steps</div>
+        <div class="box steps-20">20 Steps</div>
+    </div>
+</body>
+
+</html>

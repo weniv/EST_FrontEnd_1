@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            margin: 20px;
+            width: 88px;
+            height: 32px;
+            box-shadow: inset 2px 2px 0 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .normalWrapper,
+        .posiWrapper,
+        .negaWrapper {
+            display: flex;
+            flex-flow: column wrap;
+        }
+
+        .normal {
+            color: #cbd5df;
+            background-color: #343f50;
+        }
+
+        .normalWrapper .hover:hover,
+        .normalWrapper .active:active {
+            color: #fff;
+            background-color: #343f50;
+            text-decoration: underline;
+        }
+
+        .positive {
+            color: #439aff;
+            background-color: #343f50;
+        }
+
+        .posiWrapper .hover:hover,
+        .posiWrapper .active:active {
+            color: #fff;
+            background-color: #439aff;
+        }
+
+        .negative {
+            color: #eb5757;
+            background-color: #343f50;
+        }
+
+        .negaWrapper .hover:hover,
+        .negaWrapper .active:active {
+            color: #fff;
+            background-color: #eb5757;
+        }
+
+        .normalWrapper .hover:hover,
+        .posiWrapper .hover:hover,
+        .negaWrapper .hover:hover {
+            box-shadow: inset 2px 2px 0 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .normalWrapper .active:active,
+        .posiWrapper .active:active,
+        .negaWrapper .active:active {
+            box-shadow: inset 2px 2px 0 0 rgba(0, 0, 0, 0.2);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <body>
+        <div class="container">
+            <div class="normalWrapper">
+                <form action="">
+                    <button type="button" class="normal">Button</button>
+                    <button class="normal hover">Button</button>
+                    <button class="normal active">Button</button>
+                    <button class="normal disabled" disabled>Button</button>
+                </form>
+            </div>
+            <div class="posiWrapper">
+                <button class="positive">Yes</button>
+                <button class="positive hover">Yes</button>
+                <button class="positive active">Yes</button>
+            </div>
+            <div class="negaWrapper">
+                <button class="negative">No</button>
+                <button class="negative hover">No</button>
+                <button class="negative active">No</button>
+            </div>
+        </div>
+    </body>
+</body>
+
+</html>
