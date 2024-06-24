@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes move-watch {
+
+            /* 0%{}
+            100%{} */
+            from {
+                transform: rotate(0deg);
+            }
+
+            50% {
+                transform: rotate(180deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .cont {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            background-color: royalblue;
+            border-radius: 30%;
+        }
+
+        div {
+            /* position: absolute;
+            top: 200px;
+            left: 200px; */
+            transform: translate(100px, 100px);
+            width: 10px;
+            height: 150px;
+            background-color: black;
+            transform-origin: center top;
+        }
+
+        .sec {
+            background-color: red;
+            /* animation: move-watch 60s infinite steps(60); */
+        }
+
+        .min {
+            background-color: green;
+            animation: move-watch 120s infinite linear;
+        }
+
+        .hour {
+            animation: move-watch 240s infinite linear;
+        }
+    </style>
+</head>
+
+<body>
+    <article class="cont">
+        <div class="sec"></div>
+        <div class="min"></div>
+        <div class="hour"></div>
+    </article>
+</body>
+
+</html>

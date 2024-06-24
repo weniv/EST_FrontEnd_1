@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @keyframes test {
+            0% {
+                margin-left: 40%;
+                background-color: royalblue;
+            }
+
+            50% {
+                margin-left: 0%;
+                background-color: royalblue;
+            }
+
+            100% {
+                margin-left: 80%;
+                background-color: royalblue;
+            }
+        }
+
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            animation: test 3s both;
+        }
+
+        div:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+</body>
+
+</html>
