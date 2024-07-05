@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 스코프
+      // 접근해서 사용할 수 있는 범위
+
+      // 전역 스코프: 어디서든 접근이 가능하다
+      var a = 10;
+      let b = 20;
+      const c = 30;
+
+      function func1() {
+        // 함수 스코프
+        var fA = 40;
+        let fB = 50;
+        const fC = 60;
+        console.log("function: ", a, b, c);
+        console.log("function: ", fA, fB, fC);
+      }
+      func1();
+      //console.log(fA);
+      //console.log(fB);
+      // console.log(fC);
+      {
+        var bA = 70;
+        let bB = 80;
+        {
+          const bC = 90;
+        }
+        console.log("block: ", a, b, c);
+        console.log("block:", bA, bB, bC);
+      }
+      console.log("---out");
+      console.log(bA);
+      // console.log(bB);
+      // console.log(bC);
+    </script>
+  </body>
+</html>
