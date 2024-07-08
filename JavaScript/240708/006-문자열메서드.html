@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 문자열 탐색
+      const str = "Hello World, Hello weniv!";
+
+      console.log("---indexOf---");
+      console.log(str.indexOf("Hello"));
+      console.log(str.indexOf("weniv"));
+      console.log(str.indexOf("licat"));
+      console.log(str.indexOf("Hello", 5));
+
+      console.log("---lastIndexOf---");
+      console.log(str.lastIndexOf("Hello"));
+      console.log(str.lastIndexOf("weniv"));
+      console.log(str.lastIndexOf("licat"));
+      console.log(str.lastIndexOf("Hello", 12));
+
+      console.log("---includes---");
+      console.log(str.includes("Hello"));
+      console.log(str.includes("hello"));
+
+      console.log("---match---");
+      console.log(str.match(/[A-Z]/g)); // 대문자
+      console.log(str.match(/[0-9]/g)); // 숫자
+      console.log(str.match(/H/));
+
+      // 문자열의 일부를 가져오는 메서드
+      // 시작인덱스 <= x < 종료인덱스
+      const str2 = "Hello Weniv!";
+      console.log("---substring---");
+      console.log(str2.substring(0, 5));
+      console.log(str2.substring(6, str2.length - 1));
+      console.log(str2.substring(6));
+      console.log(str2.substring());
+      console.log(str2.substring(-2, 5));
+      console.log(str2.substring(2, "hello"));
+
+      console.log("---slice---");
+      console.log(str2.slice(0, 5));
+      console.log(str2.slice(6, -1)); // 음수 인덱스를 허용
+      console.log(str2.slice(2, "hello")); //slice(2, 0);
+      console.log(str2.slice("hello", 2));
+
+      console.log("---substr---");
+      console.log(str2.substr(6, 5));
+      console.log(str2.substr(6)); // 길이가 없으면 문자열의 끝까지
+      console.log(str.substr(6, 0));
+      console.log(str.substr(6, -2)); // 음수나 0이면 빈 문자열
+      // Deprecated -> 웹 표준에서 제거될 수 있다.
+
+      // 문자열 쪼개는 메서드
+      console.log("---split---");
+      const phonenumber = "010-1234-1234";
+      console.log(phonenumber.split("-"));
+      console.log("apple".split(""));
+      console.log("apple".split("", 2));
+
+      // 문자열을 바꾸는 메서드
+      // 원래의 값을 바꾸는 것 X
+      console.log("---replace---");
+      const str3 = "Hello World! Hello Weniv!";
+      console.log(str3.replace("Hello", "Hi"));
+      console.log(str3.replace(/Hello/g, "Hi"));
+
+      console.log(str3.replaceAll("Hello", "Hi"));
+
+      // 대소문자를 변경하는 메서드
+      console.log("---lower/upper---");
+      const search = "JavaScript"; // javascript, JAVASCRIPT
+      console.log(search.toUpperCase());
+      console.log(search.toLowerCase());
+
+      // 문자열 반복
+      // console.log("*" * 10);
+      console.log("---repeat---");
+      console.log("*".repeat(5));
+
+      // 문자열 시작과 끝
+      console.log("---trim---");
+      console.log("     Hello licat   ".trim());
+
+      console.log("---padStart, padEnd ---");
+      // 3시 -> 03
+      console.log("3".padStart(2, "0"));
+      console.log("3".padStart(2));
+      console.log("12".padStart(2, "0"));
+      console.log("12".padEnd(5, "-"));
+    </script>
+  </body>
+</html>

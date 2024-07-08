@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 문자열
+      // 작은따옴표, 큰따옴표, 백틱으로 감싸진 텍스트
+      let str1 = "I'm hati";
+      let str2 = 'hello"\nworld';
+      let str3 = `hello \`
+      
+      world`;
+      console.log(str1);
+      console.log(str2);
+      console.log(str3);
+
+      console.log(typeof str1);
+      console.log(typeof str2);
+      console.log(typeof str3);
+
+      // 10 + 20 = 30
+      const a = 10;
+      const b = 20;
+
+      console.log(a + " + " + b + " = " + (a + b));
+      console.log(`${a} + ${b} = ${a + b}`);
+      console.log(`제 이름은 ${"백경현"}입니다`);
+      console.log(`제 이름은 ${20}입니다`);
+
+      //-------------- 문자열의 특징 -----------
+      console.log("-------문자열 특징-------");
+      let greeting = "Hello world";
+      console.log(greeting[0]);
+      console.log(greeting[5]);
+      console.log(greeting[12]);
+      console.log(greeting[-1]); // undefined
+      console.log(greeting.at(-1));
+
+      console.log("문자열의 길이: ", greeting.length);
+      console.log(greeting[greeting.length - 1]);
+
+      greeting[5] = "k";
+      console.log(greeting);
+
+      let greeting2 = "안녕하세요";
+      let company = "위니브";
+      console.log(greeting2 + company); // '안녕하세요위니브'
+      console.log("안녕하세요위니브" === greeting2 + company);
+      console.log("안녕하세요위니브" === greeting2, company);
+      console.log("a+b=" + a + b); // "a+b=10" -> "a+b=1020"
+    </script>
+  </body>
+</html>
