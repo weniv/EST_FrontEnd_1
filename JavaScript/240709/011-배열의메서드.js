@@ -145,3 +145,9 @@ copyArr[0] = 10;
 copyArr[2][0] = 20;
 console.log("origin:", arr10);
 console.log("copy: ", copyArr);
+
+console.log("--- for of ---"); // 순회
+const arr11 = [10, 20, 30, 40];
+for (const iterator of arr11) {
+  console.log(iterator);
+}
