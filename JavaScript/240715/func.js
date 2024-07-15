@@ -122,7 +122,7 @@ return 1
  * 
  */
 
-// 피보나치 for문
+// 피보나치 반복문
 function fibonacci(n){
     
     let a = 1, b = 0, temp;
@@ -142,6 +142,8 @@ for (let index =0; index<6; index++){
     sum += index;
 }
 
+
+
 function sum(n){
     if(n <= 1){
         return n
@@ -150,3 +152,25 @@ function sum(n){
     // 4일경우에는 4 + 3~1까지 더한값
     return n + sum(n-1) 
 }
+
+
+// 클로저 ============================
+function getNum(){
+    let y = 1;
+    return y
+}
+
+const result = getNum();
+
+// innerFunc을 만들어주는 함수
+function outerFunc() {
+    let x = 10;
+    // 내부함수 innerFunc
+    function innerFunc(y) {
+        x+=y
+        return x
+    }
+    return innerFunc
+  }
+  // 결과값으로 outerFunc의 innerFunc을 반환
+  const func = outerFunc();
