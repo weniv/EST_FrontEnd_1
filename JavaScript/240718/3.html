@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        음....
+        <br>
+        <a href="https://www.naver.com" class="link">네이버 링크입니다만..</a>
+    </div>
+</body>
+<script>
+    document.querySelector("a").addEventListener("click",function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        console.log("a 클릭!")
+    })
+
+
+
+    // preventDefalut를 사용해도 상위요소의 div의 이벤트가 발생한다.
+    document.querySelector("div").addEventListener("click",function(e){
+        console.log("div 클릭!")
+    })
+
+</script>
+</html>
