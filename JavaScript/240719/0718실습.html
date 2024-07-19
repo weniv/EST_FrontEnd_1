@@ -58,6 +58,7 @@
     //     })
     // })
     window.addEventListener("click",(event)=>{
+        event.stopPropagation()
         if (event.target.tagName === "P"){
             alert(event.target.textContent);
         }
@@ -66,6 +67,9 @@
                 event.target.parentElement.remove();
             }
         }
+    },true);
+    document.querySelector("button").addEventListener("click",(e)=>{
+        e.stopPropagation();
     })
   </script>
 </html>
