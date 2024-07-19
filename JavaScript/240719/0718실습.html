@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>실습3</title>
+  </head>
+  <body>
+    <h1>나의 todo list</h1>
+    <p>
+      1. 오늘 저녁에는 부대찌게를 끓여 먹겠다.<button type="button">
+        삭제
+      </button>
+    </p>
+    <p>2. 후식으로 슈팅스타를 먹겠다.<button type="button">삭제</button></p>
+    <p>
+      3. 자기 전에 반드시 내일 아침 메뉴를 생각해두겠다.<button type="button">
+        삭제
+      </button>
+    </p>
+  </body>
+  <script>
+    // // P 태그를 클릭하면 p 태그의 컨텐츠를 출력하는 alert 창을 띄워주고
+    // // P 태그 클릭하기.
+    // // P태그들 선택하기
+    // const $contents = document.querySelectorAll("p");
+    // console.log($contents,"$contents")
+    // // P태그들을 모은 NodeList에서 forEach를 통해 P 낱개 선택하기
+    // $contents.forEach(($content)=>{
+    //     console.log($content,"P태그 낱개");
+    //     // P태그에 클릭 이벤트 추가하기
+    //     $content.addEventListener("click",function (){
+    //         console.log($content,"클릭함!");
+    //         // 클릭 잘되는것 확인했으니 alert을 띄워보자
+    //         alert($content.textContent);
+    //     })
+    // });
+
+    // // listener함수를 어떻게 실행하냐 listener(event)
+
+    // // 삭제 버튼을 클릭하면 삭제할 것인지를 물어보는 confirm 창을 띄워주고, 확인을 누르면 P태그를 삭제합니다.
+    // // 삭제 버튼들 가져오기
+    // const $delButtons = document.querySelectorAll("button");
+    // $delButtons.forEach(($delButton)=>{
+    //     console.log($delButton,"버튼태그 낱개");
+    //     // 버튼요소에 클릭 이벤트 추가하기
+    //     $delButton.addEventListener("click",function (event){
+    //         event.stopPropagation();
+    //         console.log($delButton,"클릭함!");
+    //         // 조건에 따라
+    //         if (confirm("정말 삭제하시겠습니까?")){
+    //             // P태그 삭제해야됨.
+    //             // P태그를 선택해야한다.-> 어떤 P태그..?-> 클릭한 버튼의 부모요소
+    //             // 버튼의 부모요소 선택하기를 하면 되겠군.
+    //             const $parent = $delButton.parentElement;
+    //             $parent.remove();
+    //         }
+    //     })
+    // })
+    window.addEventListener("click",(event)=>{
+        if (event.target.tagName === "P"){
+            alert(event.target.textContent);
+        }
+        if (event.target.tagName === "BUTTON"){
+            if(confirm("정말 삭제하시겠습니까?")){
+                event.target.parentElement.remove();
+            }
+        }
+    })
+  </script>
+</html>
