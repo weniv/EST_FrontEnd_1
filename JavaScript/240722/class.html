@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // class Robot{ 
+    //     constructor(name){
+    //         this.name = name;
+    //     }
+    //     sayYourName(){
+    //         console.log(`나으 이름은 ${this.name}이다.`);
+    //     }
+    // }
+    // const robot = new Robot("이다빈");
+    // console.log(robot);
+    // class BabyRobot extends Robot{
+    //     constructor(name, age){
+    //         super(name);
+    //         this.name = "베이비" + name;
+    //         this.age = age;
+    //     }
+    //     walk(){
+    //         console.log("걷기");
+    //     }
+    //     sayYourName(){
+    //         console.log(`새로 정의한 함수`);
+    //     }
+    // }
+    // const babyRobot = new BabyRobot("없음",1);
+    // console.log(babyRobot);
+
+    // class Sausage{
+    //     // 생성자 함수는 객체가 생성될때 실행됨니다
+    //     constructor(재료,재료1){
+    //         this.재료 = 재료;
+    //         this.재료1 = 재료1;
+    //         console.log("소시지가 생성됨!")
+    //     }
+    //     taste(){
+    //         console.log(`${this.재료},${this.재료1}맛이 납니다.`)
+    //     }
+    // }
+    // const sausage = new Sausage("돼지고기","고추");
+    // sausage.taste();
+    
+    // class FireSausage extends Sausage{
+    //     taste(){
+    //         super.taste();
+    //         console.log("불맛이 나기 시작합니다....");
+    //     }
+    // }
+    // const fireSausage = new FireSausage("돼지고기", "마늘");
+    // fireSausage.taste();
+
+    // class Sausage {
+    // constructor(맛1, 맛2) {
+    //     this.맛1 = 맛1;
+    //     this.맛2 = 맛2;
+    // }
+    // taste = function() { // 요기요!!
+    //     console.log(`sausage: ${this.맛1}, ${this.맛2} 맛이 나요!`);
+    // }
+    // }
+    // const sausage = new Sausage("매운", "양파");
+    // sausage.taste();
+    // // 불맛 소세지
+    // class FiresSausage extends Sausage {
+    //     // constructor이 부모와 동일할땐 생략 가능 -> 위로 올라가면서 찾기 때문
+    //     taste() {
+    //         super.taste();
+    //         console.log(`불맛이 나기 시작합니다 호호`);
+    //     }
+    // }
+    // console.log(sausage);
+    // const fireSausage = new FiresSausage("매운", "양파");
+    // console.log(fireSausage); // fucntion키워드를 이용해 선언하면 상속후에 덮어쓰기가 안되는 이유.
+
+
+    // ====================== private =====
+    // class Robot {
+    //     #password
+
+    //     constructor(name, pw) {
+    //         this.name = name;
+    //         this.#password = pw;
+    //     }
+
+
+    //     sayYourName() {
+    //         console.log(`삐리비리. 제 이름은 ${this.name}입니다. 주인님.`);
+    //     }
+
+    //     getPassword() {
+    //         return this.#password
+    //     }
+
+    //     setPassword(pw) {
+    //         this.#password = pw;
+    //     }
+    // }
+    // const robot = new Robot("로봇", "1234");
+    // console.log(robot.getPassword(),"private 변수를 가져오기");
+    // robot.setPassword("5678");// private 변수 변경
+    // console.log(robot.getPassword(),"변경된 private 변수를 가져오기");
+    // get set 키워드 사용하기
+    class Robot {
+        #password
+
+        constructor(name, pw) {
+            this.name = name;
+            this.#password = pw;
+        }
+
+
+        sayYourName() {
+            console.log(`삐리비리. 제 이름은 ${this.name}입니다. 주인님.`);
+        }
+
+        get password() {
+            console.log("비밀번호 가져오기");
+            return this.#password
+        }
+
+        set password(pw) {
+            this.#password = pw;
+        }
+    }
+
+    const bot = new Robot('재현', 1234);
+    console.log(bot.password);
+    bot.password = 5678;
+</script>
+</html>
