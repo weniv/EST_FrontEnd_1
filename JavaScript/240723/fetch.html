@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // const req = new Promise((resolve, reject)=>{
+    //     const requestObj = new XMLHttpRequest();
+    //     requestObj.open('GET', 'https://test.api.weniv.co.kr/mall');
+    //     requestObj.onreadystatechange = () => {
+    //         if (requestObj.readyState === 4 && requestObj.status === 200) {
+    //             const result = requestObj.responseText;
+    //             resolve(result);
+    //         }
+    //         else if(requestObj.readyState === 4 && requestObj.status !== 200){
+    //             reject("실패했다");
+    //         }
+    //     };
+    //     requestObj.send();
+    // })
+    // function getRequest(url){
+    //     const req = new Promise((resolve, reject)=>{
+    //         const requestObj = new XMLHttpRequest();
+    //         requestObj.open('GET', url);
+    //         requestObj.onreadystatechange = () => {
+    //             if (requestObj.readyState === 4 && requestObj.status === 200) {
+    //                 const result = requestObj.responseText;
+    //                 resolve(result);
+    //             }
+    //             else if(requestObj.readyState === 4 && requestObj.status !== 200){
+    //                 reject("실패했다");
+    //             }
+    //         };
+    //         requestObj.send();
+    //     })
+    //     return req;
+    // }
+
+    // const req = getRequest('https://test.api.weniv.co.kr/mall');
+    // req.then
+
+    const req = fetch('https://test.api.weniv.co.kr/mall');
+    console.log(req);
+    req.then((res)=>{
+        return res.json();
+    })
+    .then((json)=>{
+        // 여기에 응답된 객체가 json으로 온다.
+        console.log(json);
+        const $root = document.createElement('ol');
+        document.body.appendChild($root);
+        json.forEach((item)=>{
+            const $div = document.createElement('li');
+            $div.textContent = item.productName;
+            $root.appendChild($div);
+        })
+    }).catch((err)=>{
+        // console.log(err);
+    })
+
+
+    function drawProduct(data){
+            // 상품 그려줄 컨테이너
+            const $root = document.querySelector('#root');
+            const $productDiv = document.createElement('div');
+            const $productName = document.createElement('h2');
+            const $productImage = document.createElement('img');
+
+            // 각 요소에 데이터 넣기
+            $productName.textContent = data.productName;
+            $productImage.src = "https://test.api.weniv.co.kr/"+data.thumbnailImg;
+            $productDiv.append($productName, $productImage);
+            $productImage.style.width = "100px";
+            $productDiv.style.width = "100px";
+            $root.append($productDiv);
+    }
+
+    const mallReq = fetch('https://test.api.weniv.co.kr/mall');
+    mallReq.then((res)=>{
+        return res.json()
+    }).then((response)=>{
+        json.forEach(response);// 배열을 순회하면서 화면에 다 그려주기
+    })
+</script>
+</html>

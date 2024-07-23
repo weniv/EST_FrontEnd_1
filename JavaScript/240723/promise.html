@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+<script>
+    // 프로미스
+    // .처리가끝나고나서할일((result)=>{
+    // 
+    // })
+    // .처리가끝나고나서할일((result)=>{
+    // 
+    // })
+    // .처리가끝나고나서할일((result)=>{
+    // 
+    // })
+    // .처리가끝나고나서할일((result)=>{
+    // 
+    // })
+
+    // vs
+    
+    // 콜백
+    // .처리가끝나고나서할일(()=>{
+    //// .처리가끝나고나서할일(()=>{
+    // //    .처리가끝나고나서할일(()=>{
+    // //        .처리가끝나고나서할일(()=>{
+    // 
+    //              })
+    //          })
+    //      })
+    // })
+    
+    // const  promise = new Promise((resolve,reject)=>{
+    //     resolve("성공했다");
+    // });
+
+    // promise
+    // .then((result)=>{
+    //     console.log(result);
+    //     // 다음 콜백에 들어갈 값
+    //     return "이 값"
+    // }).then((뭔가값)=>{
+    //     console.log(뭔가값);
+    //     return "다음값"
+    // }).then((rkqt)=>{
+    //     console.log(rkqt);
+    // })
+
+    // const req = new Promise((resolve, reject)=>{
+    //     const requestObj = new XMLHttpRequest();
+    //     // requestObj.open('GET', 'https://test.api.weniv.co.kr/mall');
+    //     requestObj.open('GET', 'https://test.apiaaa.weniv.co.kr/mall');
+    //     requestObj.onreadystatechange = () => {
+    //         if (requestObj.readyState === 4 && requestObj.status === 200) {
+    //             const result = requestObj.responseText;
+    //             resolve(result);   
+    //         }
+    //         else if(requestObj.readyState === 4 && requestObj.status !== 200){
+    //             reject(new Error("에러입니다."));
+    //         }
+    //     };
+    //     requestObj.send();
+    // })
+
+    // req.then((result)=>{
+    //     console.log(JSON.parse(result));
+    // }).catch((error)=>{
+    //     console.error(error);
+    //     return "???"
+    // }).then((result)=>{
+    //     console.log(result);
+    //     throw new Error("에러입니다.222");
+    // }).catch((error)=>{
+    //     console.error(error,"????????");
+    // })
+
+    // const req = new Promise((resolve, reject)=>{
+    //     const requestObj = new XMLHttpRequest();
+    //     requestObj.open('GET', 'https://test.api.weniv.co.kr/mall');
+    //     requestObj.onreadystatechange = () => {
+    //         if (requestObj.readyState === 4 && requestObj.status === 200) {
+    //             const result = requestObj.responseText;
+    //             resolve(result);
+    //         }
+    //         else if(requestObj.readyState === 4 && requestObj.status !== 200){
+    //             reject("실패했다");
+    //         }
+    //     };
+    //     requestObj.send();
+    // })
+
+    // function drawProduct(data){
+    //     // 상품 그려줄 컨테이너
+    //     const $root = document.querySelector('#root');
+    //     const $productDiv = document.createElement('div');
+    //     const $productName = document.createElement('h2');
+    //     const $productImage = document.createElement('img');
+
+    //     // 각 요소에 데이터 넣기
+    //     $productName.textContent = data.productName;
+    //     $productImage.src = "https://test.api.weniv.co.kr/"+data.thumbnailImg;
+    //     $productDiv.append($productName, $productImage);
+    //     $productImage.style.width = "100px";
+    //     $productDiv.style.width = "100px";
+    //     $root.append($productDiv);
+    // }
+
+    // // 어떤 작업이 끝났을때. 무엇 할것이다 -> promise(약속)
+    // req.then((response)=>{
+    //     // 비동기요청 성공후에 응답받은 값을 이용해서 뭔가 할 공간.
+    //     const json = JSON.parse(response);
+    //     // 응답 결과중 하나.
+    //     //   {
+    //     //     "id": 1,
+    //     //     "productName": "버그를 Java라 버그잡는 개리씨 키링 개발자키링 금속키링",
+    //     //     "price": 12500,
+    //     //     "stockCount": 100,
+    //     //     "thumbnailImg": "asset/img/1/thumbnailImg.jpg",
+    //     //     "option": [],
+    //     //     "discountRate": 0,
+    //     //     "shippingFee": 1500,
+    //     //     "detailInfoImage": [
+    //     //         "asset/detail/2/detail1.png",
+    //     //         "asset/detail/2/detail2.png"
+    //     //     ],
+    //     //     "viewCount": 0,
+    //     //     "pubDate": "2022-02-28",
+    //     //     "modDate": "2022-02-28"
+    //     // }
+    //     // drawProuct(json[0]); // 하나를 이용해서 테스트하기
+    //     json.forEach(drawProduct);// 배열을 순회하면서 화면에 다 그려주기
+    // })
+
+    /** 
+     *  1. 서버에 요청을보내서 데이터를 받아오자
+     *  2. 데이터 잘 받오는지 확인
+     *  3. 데이터 구조를 확인
+     *  4. 받아온 데이터를 화면에 그려주자
+    */
+</script>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // // 요청을 위한 XHR객체 생성
+    // const requestObj = new XMLHttpRequest();
+    // // readystate : 요청을 보내는 클라이언트의 상태를 의미합니다.
+    // console.log(requestObj.readyState);// 0 (UNSENT) - XHR 객체가 생성되었지만 아직 초기화되지 않았습니다.
+
+    // // 요청을 준비(요청을 open) open메서드의 첫번째 요소에는 http method, 두번째에는 요청을 보낼 URL
+    // requestObj.open('GET', 'https://test.api.weniv.co.kr/mall');
+
+    // // 1 (OPENED) - open()함수가 호출되어 요청이 초기화되었습니다.
+    // console.log(requestObj.readyState);
+
+    // // 요청 보낼때, 요청 상태가 바뀔때 마다 실행될 콜백함수 설정.
+    // requestObj.onreadystatechange = () => {
+    //     console.log(requestObj.readyState); // 2, 3, 4
+    //     // 2 (HEADERS_RECEIVED) - send()함수가 호출되었습니다.
+    //     // 3 (LOADING) - 데이터를 다운받는 중 입니다.
+    //     // 4 (DONE) - 통신이 완료되었습니다.
+    //     if (requestObj.readyState === 4 && requestObj.status === 200) {
+    //         const result = requestObj.responseText;
+    //         console.log(JSON.parse(result)[0]);
+    //     }
+    // };
+    // requestObj.send();
+    // // send를 하면 요청이 보내지고, readyState가 2로 바뀐다.
+    // // 그리고 요청에대한 응답을 받기전에는 readyState가 3이된다.
+    // // 요청에 대한 응답을 받아서 통신이 완료되었을때는 readyState가 4가 된다.
+
+    // ==== send 요청을 앞으로 했을때 생길 수 있는일.======> 비동기는 순서가 보장되지 않는다.
+    // const requestObj = new XMLHttpRequest();
+    // requestObj.open('GET', 'https://test.api.weniv.co.kr/mall');
+    // requestObj.send();//치킨 시키기
+    // setTimeout(
+    //     ()=>{
+            
+    //         requestObj.onreadystatechange = () => {
+    //             console.log(requestObj.readyState); // 2, 3, 4
+    //             // 2 (HEADERS_RECEIVED) - send()함수가 호출되었습니다.
+    //             // 3 (LOADING) - 데이터를 다운받는 중 입니다.
+    //             // 4 (DONE) - 통신이 완료되었습니다.
+    //             if (requestObj.readyState === 4 && requestObj.status === 200) {
+    //                 // 치킨 도착하면 먹어라.
+    //                 const result = requestObj.responseText;
+    //                 console.log(JSON.parse(result)[0]);
+    //             }
+    //         };
+    //     },1000)
+    function reqFunction(method,url, callback){
+        const requestObj = new XMLHttpRequest();
+        requestObj.open('GET', 'https://test.api.weniv.co.kr/mall');
+        requestObj.onreadystatechange = () => {
+            if (requestObj.readyState === 4 && requestObj.status === 200) {
+                const result = requestObj.responseText;
+                callback(result);
+            }
+        };
+        requestObj.send();
+    }
+
+    //콜백지옥
+    reqFunction('GET', 'https://test.api.weniv.co.kr/mall', (result) => {
+        // 아주 어렵고 복잡한 로직이 들어있음
+        // 생략
+        //앞 요청에서 받아온 값을 이용해서 요청해야할 수도 있음
+        reqFunction('GET',`https://test/${id}`,(result)=>{
+            // 아주 어렵고 복잡한 로직이 들어있음
+            // 생략
+            // 앞 요청에서 받아온 값을 이용해서 요청
+            reqFunction('GET','https://nickname/${userid}',(result)=>{
+                // 아주 어렵고 복잡한 로직이 들어있음
+                // 생략
+            })
+        })
+    });
+    </script>
+</html>
