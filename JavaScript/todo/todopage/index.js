@@ -15,17 +15,21 @@ const fetchTodos = async function(){
 fetchTodos()
 
 const addTodo = async function(todoTxt){
-    const req = await fetch("http://localhost:3000/todos",{
-        method:"POST",
-        headers:{
-            "Content-Type":"application/json"
-        },
-        body:JSON.stringify({todo:todoTxt, done:false})
-    })
-    const newPost = await req.json()
-    const $li = document.createElement("li");
-    $li.textContent = newPost.todo;
-    $ul.appendChild($li);
+    try {
+        const req = await fetch("http://localhost:3000/todos",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({todo:todoTxt, done:false})
+        })
+        const newPost = await req.json()
+        const $li = document.createElement("li");
+        $li.textContent = newPost.todo;
+        $ul.appendChild($li);
+    } catch (error) {
+        alert("서버에 이상이 있다. 알아서해라.")
+    }
 }
 
 $form.addEventListener("submit",async function(e){
