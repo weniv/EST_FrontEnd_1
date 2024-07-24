@@ -29,6 +29,8 @@ const addTodo = async function(todoTxt){
         $ul.appendChild($li);
     } catch (error) {
         alert("서버에 이상이 있다. 알아서해라.")
+    } finally{
+        console.log("여기는 실패 성공 상관없이 무조건 실행함 ㅋ")
     }
 }
 
@@ -38,3 +40,5 @@ $form.addEventListener("submit",async function(e){
     await addTodo(todoTxt);
     $input.value = ""
 })
+
+// TODO:: 완료하기 기능이랑 todo삭제하기 기능해야됩니다.
