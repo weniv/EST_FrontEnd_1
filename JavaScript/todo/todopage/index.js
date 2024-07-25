@@ -28,14 +28,20 @@ const createTodoUi = (todoData)=>{
     $li.appendChild($checkBox);
 }
 
-const fetchTodos = async function(){
+const getTodos = async ()=>{
     const res = await fetch(url);
-    const json = await res.json();
-    json.forEach((todoData)=>{
-        createTodoUi(todoData);
-    })
+    const todoDatas = await res.json();
+    return todoDatas
 }
-fetchTodos()
+
+// 최초에 화면에 todo를 그려주는 함수
+const initTodo = async function(){
+    const todoDatas = await getTodos()
+    todoDatas.forEach((todoData)=>{
+        createTodoUi(todoData);
+    });
+}
+initTodo();
 
 const addTodo = async function(todoTxt){
     try {
@@ -46,9 +52,9 @@ const addTodo = async function(todoTxt){
             },
             body:JSON.stringify({todo:todoTxt, done:false})
         })
-        const newTodoData = await req.json()
-        createTodoUi(newTodoData)
-
+        const newTodoData = await req.json();
+        return newTodoData;
+        
     } catch (error) {
         alert("서버에 이상이 있다. 알아서해라.")
     } finally{
@@ -59,7 +65,8 @@ const addTodo = async function(todoTxt){
 $form.addEventListener("submit",async function(e){
     e.preventDefault();
     const todoTxt = $input.value;
-    await addTodo(todoTxt);
+    const newTodoData = await addTodo(todoTxt);
+    createTodoUi(newTodoData);
     $input.value = "";
 })
 
