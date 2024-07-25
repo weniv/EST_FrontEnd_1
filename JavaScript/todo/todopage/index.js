@@ -3,10 +3,25 @@ const $button = document.querySelector("button");
 const $ul = document.querySelector("ul");
 const $form = document.querySelector("form");
 
+
+// todo ui에는 내용표시, 삭제버튼, 체크, 수정하기
 const createTodoUi = (todoData)=>{
     const $li = document.createElement("li");
+    
+    const $delButton = document.createElement("button");
+    $delButton.textContent ="삭제하기";
+
+    const $editButton = document.createElement("button");
+    $editButton.textContent = "수정하기";
+
+    const $checkBox = document.createElement("input");
+    $checkBox.setAttribute("type","checkbox");
+
     $li.textContent = todoData.todo;
     $ul.appendChild($li);
+    $ul.appendChild($delButton);
+    $ul.appendChild($editButton);
+    $ul.appendChild($checkBox);
 }
 
 const fetchTodos = async function(){
@@ -47,7 +62,7 @@ $form.addEventListener("submit",async function(e){
 })
 
 
-// TODO:: 완료하기 기능이랑 todo삭제하기 기능해야됩니다.
+// TODO:: 완료하기 기능이랑 todo삭제하기 기능해야됩니다. + 수정하기도 해야됩니다.
 
 const deleteTodo = ()=>{
 
