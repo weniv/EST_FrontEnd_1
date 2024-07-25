@@ -20,6 +20,8 @@ const createTodoUi = (todoData)=>{
 
     const $checkBox = document.createElement("input");
     $checkBox.setAttribute("type","checkbox");
+    $checkBox.classList.add("edit-checkbox");
+    $checkBox.checked = todoData.done
 
     $li.textContent = todoData.todo;
     $ul.appendChild($li);
@@ -86,12 +88,40 @@ const deleteTodo = async (id)=>{
 
 $ul.addEventListener("click", async (e)=>{
     if([...e.target.classList].includes("delete-btn")){
-        const parentNode = e.target.parentNode
-        const isDelete = await deleteTodo(parentNode.id)
+        const parentNode = e.target.parentNode;
+        const isDelete = await deleteTodo(parentNode.id);
         if (isDelete) {
             parentNode.remove();
         }else{
             alert("잘못된 요청입니다.");
         }
     }
+    if ([...e.target.classList].includes("edit-checkbox")) {
+        const todoId = e.target.parentNode.id;
+        const checked = e.target.checked
+        const editedTodo = await editStatus(todoId, checked);
+        if (editedTodo.done === undefined) {
+            return;
+        }
+        e.target.checked = editedTodo.done
+    }
 })
+
+const editStatus = async function(id, checked){
+    try {
+        const res = await fetch(`${url}/${id}`,{
+            method:"PATCH",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                done:checked
+            })
+        });
+        const editedTodo = await res.json();
+        return editedTodo;
+    } catch (error) {
+        
+    }
+}
+
