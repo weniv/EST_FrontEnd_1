@@ -1,3 +1,21 @@
+// 사용자가 수정하고싶은 todo의 수정하기 버튼을 누른다.
+// 사용자는 수정하기버튼을 누르고 입력창이 나온다..
+// 사용자가 입력창에 수정할 내용을 입력한다.
+// 사용자는 확인 버튼을 누른다.
+// 사용자가 수정이 완료된 것을 확인한다.
+
+
+// 수정하기 버튼이 눌리면 prompt를 띄운다.
+// 입력을 받는다.
+// -> 이미 작성되어있는 todo텍스트가 입력되어있다.
+// -> 입력을 받을때 몇 글자이상을 받을지 정해준다.
+// -> 공백이면 다시 입력하도록 알려준다.
+// -> 취소 버튼을 누르면 수정이 취소되었다고 알려줌.
+// 입력 후 확인버튼을 누르면 서버로 데이터를 전송한다.
+// 서버에 데이터가 잘 반영되었는지 확인하고 해당 데이터를 화면에 반영한다.
+
+
+
 const url = "http://localhost:3000/todos"
 
 
@@ -10,6 +28,7 @@ const $form = document.querySelector("form");
 // todo ui에는 내용표시, 삭제버튼, 체크, 수정하기
 const createTodoUi = (todoData)=>{
     const $li = document.createElement("li");
+    const $todoText = document.createElement("span");
     $li.id = todoData.id
     const $delButton = document.createElement("button");
     $delButton.textContent ="삭제하기";
@@ -17,14 +36,43 @@ const createTodoUi = (todoData)=>{
 
     const $editButton = document.createElement("button");
     $editButton.textContent = "수정하기";
+    $editButton.classList.add("edit-btn");
+    $editButton.addEventListener("click",()=>{
+        const editTodoText = prompt("수정할 todo내용을 입력해주세요:",todoData.todo);
+        const minTextLength = 1
+        if (editTodoText&&editTodoText.trim().length >= minTextLength) {
+            fetch(url+"/"+todoData.id,{
+                method:"PATCH",// PUT:내용을 아예 갈아끼울때, PATCH:일부만 수정할때,
+                headers:{
+                    "Content-Type":"application/json"
+                },
+                body:JSON.stringify({
+                    todo:editTodoText
+                })
+            }).then((res)=>{
+                return res.json()
+            }).then((editedTodoData)=>{
+                $todoText.textContent = editedTodoData.todo;
+            }).catch((err)=>{
+                console.error(err);
+                alert("전송에 실패했습니다 ㅠㅠ");
+            })
+        }else if(editTodoText===null){
+            alert("수정이 취소 되었습니다.");
+        }
+        else{
+            alert(minTextLength+"글자 이상 입력해야합니다.");
+        }
+    });
 
     const $checkBox = document.createElement("input");
     $checkBox.setAttribute("type","checkbox");
     $checkBox.classList.add("edit-checkbox");
     $checkBox.checked = todoData.done
 
-    $li.textContent = todoData.todo;
+    $todoText.textContent = todoData.todo;
     $ul.appendChild($li);
+    $li.appendChild($todoText);
     $li.appendChild($delButton);
     $li.appendChild($editButton);
     $li.appendChild($checkBox);
@@ -100,7 +148,7 @@ $ul.addEventListener("click", async (e)=>{
         const todoId = e.target.parentNode.id;
         const checked = e.target.checked
         const editedTodo = await editStatus(todoId, checked);
-        if (editedTodo.done === undefined) {
+        if ((typeof editedTodo.done) === 'boolean') {
             return;
         }
         e.target.checked = editedTodo.done
