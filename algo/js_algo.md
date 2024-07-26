@@ -88,7 +88,9 @@ const zip = (a, b) => a.map((e, i) => [e, b[i]]);
 const range = (start, end) => Array.from({length: end - start + 1}, (_, i) => start + i);
 
 Array.from('hello'); // ['h', 'e', 'l', 'l', 'o']
-Array.from({'one':10, 'two':20}, (v, i) => i); // [0, 1, 2, 3, 4]
+Array.from({'one':10, 'two':20}, (v, i) => i);
+Array.from({'one':10, 'two':20}, (v, i) => 'hello');
+Array.from({'one':10, 'two':20, length: 3}, (v, i) => 'hello');
 Array.from({1, 2, 3});
 Array.from([1, 2, 3]);
 Array.from(new Set([1, 2, 3]));
