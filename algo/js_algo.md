@@ -1078,10 +1078,1089 @@ l.append(30);
 
 ## 쉬어가기 연습문제
 * 문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/120844
+```js
+// rotate 문제입니다.
+// 이러한 문제는 이어붙이기로 쉽게 풀이가 가능할 수 있습니다.
+// [1, 2, 3] + [1, 2, 3] => '1,2,31,2,3'
+// [...arr, ...arr2] => [1, 2, 3, 1, 2, 3]
+function solution(data, direction){
+    if (direction === "right"){
+        const temp = data.pop();
+        data.unshift(temp);
+        return data;
+    } else {
+        const temp = data.shift();
+        data.push(temp);
+        return data;
+    }
+}
+
+function solution(numbers, direction) {
+    if (direction === 'right'){
+        numbers = [numbers.pop(), ...numbers]
+    } else {
+        numbers = [...numbers.slice(1), numbers.shift()]
+    }
+    return numbers
+}
+
+function solution(data, direction){
+    return direction === "right" ? [data.pop(), ...data] : [...data.slice(1), data.shift()]
+}
+
+function solution(data, direction){
+    const total = [...data, ...data];
+    if (direction === "right"){
+        return total.slice(data.length-1, -1);
+    } else {
+        return total.slice(1, 1+data.length);
+    }
+}
+
+solution([1, 2, 3], "right");
+```
+
 * 문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/120864
-* 문제 링크 : https://school.programmers.co.kr/learn/courses/30/lessons/120956
+```js
+// 특정 패턴 찾는 문제
+// "aAb1B2cC34oOp" => 37
+// "1a2b3c4d123Z" => 133
+
+// isNaN("1") => false
+// 틀린 답변, 왜냐하면 2자리, 3자리 등을 못찾습니다.
+function solution(s){
+    let result = 0;
+    for (let i of s){
+        if (!isNaN(i)){
+            result += parseInt(i);
+        }
+    }
+    return result;
+}
+
+solution("aAb1B2cC34oOp")
+
+// 정규표현식 중 숫자만 찾는 방법
+// "aAb1B2cC34oOp".match(/\d+/g)
+// ["1", "2", "34"]
+
+function solution(s) {
+    return s.match(/\d+/g).reduce((a, c) => a + parseInt(c), 0);
+}
+solution("aAb1B2cC34oOp")
+```
 
 ## 2.3 트리와 그래프
+### 2.3.1 트리의 기본 형태
+```js
+// 이진 트리의 기본형태
+// data
+// child - left
+// child - right
+const tree = {
+    root: {
+        data: 5,
+        left: {
+            data: 3,
+            left: null,
+            right: null,
+        },
+        right: {
+            data: 8,
+            left: null,
+            right: null,
+        },
+    },
+};
+```
+### 2.3.2 트리의 구현
+* 위 형태를 참고해서 트리를 만들어주세요.
+    - 우리가 구현할 트리
+        ![](tree만들기_트리순회_2.png)
+    - 어제 했던 것처럼 object로 구현하셔도 되고, class로 구현하셔도 됩니다.
+    - 시간은 10분입니다.
+```js
+const tree = {
+  root: {
+    value: 5,
+    left: {
+      value: 3,
+      left: {
+        value: 1,
+        left: null,
+        right: null
+      },
+      right: {
+        value: 4,
+        left: null,
+        right: null
+      }
+    },
+    right: {
+      value: 8,
+      left: {
+        value: 6,
+        left: null,
+        right: null
+      },
+      right: {
+        value: 9,
+        left: null,
+        right: null
+      }
+    }
+  }
+}
+tree.root.value
+5
+tree.root.left.value
+3
+tree.root.left.left.value
+1
+tree.root.left.right.value
+4
+tree.root.right.value
+8
+tree.root.right.left.value
+6
+tree.root.right.right.value
+9
+```
+
+```js
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+  }
+}
+let node1 = new Node(5);
+let node2 = new Node(3);
+let node3 = new Node(8);
+let node4 = new Node(1);
+let node5 = new Node(4);
+let node6 = new Node(6);
+let node7 = new Node(9);
+
+let root = node1;
+node1.left = node2;
+node1.right = node3;
+node2.left = node4;
+node2.right = node5;
+node3.left = node6;
+node3.right = node7;
+
+root.right.left.data;
+```
+
+* 트리의 class 구현 - 1 (데이터 추가)
+    * 완벽한 트리를 구현하는데 목표가 있지 않습니다.
+```js
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+class Tree {
+    constructor(data){
+        this.init = new Node(data);
+        this.root = this.init;
+        this.length = 0; // 노드의 갯수
+    }
+
+    add(data){
+        let newNode = new Node(data);
+        let current = this.root;
+        while (current) {
+            if (data == current.data) {
+                // 들어온 값이 이미 존재하는 값이면 추가하지 않습니다.
+                return;
+            } else if (data < current.data) {
+                // 왼쪽으로 이동해야 합니다.
+                // 이동한 곳에 데이터가 비어있으면 데이터를 넣습니다.
+                // 이동한 곳에 데이터가 있으면 계속 타고 내려갑니다.
+                if (!current.left) {
+                    current.left = newNode;
+                    this.length++;
+                    return;
+                }
+                current = current.left;
+            } else if (data > current.data) {
+                // 오른쪽으로 이동해야 합니다.
+                // 이동한 곳에 데이터가 비어있으면 데이터를 넣습니다.
+                // 이동한 곳에 데이터가 있으면 계속 타고 내려갑니다.
+                if (!current.right) {
+                    current.right = newNode;
+                    this.length++;
+                    return;
+                }
+                current = current.right;
+            }
+        }
+    }
+}
+
+let t = new Tree(5);
+t.add(3);
+t.add(8);
+t.add(1);
+t.add(4);
+t.add(6);
+t.add(9);
+
+t.root.data
+5
+t.root.left.data
+3
+t.root.right.data
+8
+t.root.left.left.data
+1
+```
+
+* 트리의 class 구현 - 2 (트리의 순회)
+    * 완벽한 트리를 구현하는데 목표가 있지 않습니다.
+```js
+class Node {
+  constructor(data) {
+    this.data = data;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+class Tree {
+    constructor(data){
+        this.init = new Node(data);
+        this.root = this.init;
+        this.length = 0; // 노드의 갯수
+    }
+
+    add(data){
+        let newNode = new Node(data);
+        let current = this.root;
+        while (current) {
+            if (data == current.data) {
+                // 들어온 값이 이미 존재하는 값이면 추가하지 않습니다.
+                return;
+            } else if (data < current.data) {
+                // 왼쪽으로 이동해야 합니다.
+                // 이동한 곳에 데이터가 비어있으면 데이터를 넣습니다.
+                // 이동한 곳에 데이터가 있으면 계속 타고 내려갑니다.
+                if (!current.left) {
+                    current.left = newNode;
+                    this.length++;
+                    return;
+                }
+                current = current.left;
+            } else if (data > current.data) {
+                // 오른쪽으로 이동해야 합니다.
+                // 이동한 곳에 데이터가 비어있으면 데이터를 넣습니다.
+                // 이동한 곳에 데이터가 있으면 계속 타고 내려갑니다.
+                if (!current.right) {
+                    current.right = newNode;
+                    this.length++;
+                    return;
+                }
+                current = current.right;
+            }
+        }
+    }
+
+    // 깊스너큐
+    DFS(){
+        // 깊이우선탐색, DFS(Depth First Search)
+        // Stack 이용
+
+        let result = []; // 방문경로
+        let stack = [this.root];
+
+        while (stack.length !== 0) {
+            let current = stack.pop();
+            if (current.right) {
+                stack.push(current.right)
+            };
+            if (current.left) {
+                stack.push(current.left)
+            };
+            result.push(current.data);
+        }
+
+        return result;
+    }
+
+    BFS(){
+        // 너비우선탐색, BFS(Breadth First Search)
+        // Queue 이용
+
+        let result = []; // 방문경로
+        let queue = [this.root];
+
+        while (queue.length !== 0) {
+            let current = queue.shift();
+            if (current.right) {
+                queue.push(current.right)
+            };
+            if (current.left) {
+                queue.push(current.left)
+            };
+            result.push(current.data);
+        }
+
+        return result;
+    }
+}
+
+let t = new Tree(5);
+t.add(3);
+t.add(8);
+t.add(1);
+t.add(4);
+t.add(6);
+t.add(9);
+
+t.DFS();
+t.BFS();
+```
+
 ## 2.4 정렬 알고리즘
+- 재미있는 사실(재미없을 수도 있습니다. 사례를 말씀드릴게요.)
+    - JavaScript의 Array의 sort는 알고리즘이 고정이 아닙니다. 각 브라우저마다(벤더사마다) 다른 sort를 사용하고 있어서 같은 값이면 브라우저마다 보여지는 화면이 다를 수 있습니다.
+    - Google이 Chrome 70 이전에 개수에 따라 다른 알고리즘을 혼합하는 정렬을 사용했다가(InsertionSort & QuickSort 사용) 얼마전에(18년도에) Timsort로 변경했습니다.
+    - 정렬 알고리즘 중에서 가장 인기있는 알고리즘은 병합정렬(존 폰 노이만 제작)이었습니다.
+    - Python에서 시작된 Timsort로(팀 피터스) 대동단결하고 있는 모양세입니다. Python 만세!
+    - Timsort는 삽입정렬과 병합정렬을 적절히 조합한 것이고, 2002년도에 Python을 위해 C로 구현되었습니다.
+    - 정렬 알고리즘 3대장 비교(Bset, Worst)
+        - 병합 정렬 : nlogn, nlogn
+        - 퀵 정렬 : nlogn, n\*\*2
+        - 팀소트 : n, nlogn
+- 정렬 알고리즘을 작성할 때 주의사항
+
+### 2.4.1 공간 복잡도와 시간 복잡도
+- 시간 복잡도: 얼마나 많은 시간이 걸렸는지
+- 공간 복잡도: 얼마나 많은 공간이 필요했는지
+
+```js
+// 시간 복잡도 계산
+// O(n)
+const n = 10;
+for (let i = 0; i < n; i++){
+    console.log(i);
+}
+
+// O(n^2)
+const n = 10;
+for (let i = 0; i < n; i++){
+    for (let j = 0; j < n; j++){
+        console.log(i, j);
+    }
+}
+
+// O(n^3)
+const n = 10;
+for (let i = 0; i < n; i++){
+    for (let j = 0; j < n; j++){
+        for (let k = 0; k < n; k++){
+            console.log(i, j, k);
+        }
+    }
+}
+
+// O(n)
+// 주의!
+// O(3n) => O(n)
+// 상수는 항상 무시됩니다.
+const n = 10;
+for (let i = 0; i < n; i++){
+    for (let j = 0; j < 3; j++){
+        console.log(i, j);
+    }
+}
+```
+### 2.4.2 선택정렬
+
+* 선택정렬은 가장 작은 것을 선택해서 앞으로 보내는 정렬입니다.
+
+- step 1
+```
+전 = [199, 22, 33, 12, 32, 64, 72, 222, 233]
+후 = []
+```
+
+- step 2
+
+```
+전 = [199, 22, 33, 32, 64, 72, 222, 233]
+후 = [12]
+```
+
+- step 3
+
+```
+전 = [199, 33, 32, 64, 72, 222, 233]
+후 = [12, 22]
+```
+
+- step 4
+
+```
+전 = [199, 33, 64, 72, 222, 233]
+후 = [12, 22, 32]
+```
+
+- step 5
+
+```
+전 = [199, 64, 72, 222, 233]
+후 = [12, 22, 32, 33]
+```
+
+- 선택정렬 구현
+
+```js
+let 입력값 = [199, 22, 33, 12, 32, 64, 72, 222, 233];
+let 정렬된배열 = [];
+// let 길이 = 입력값.length // 가변될 수 있는 값을 미리 변수로 선언하는 방식을 사용할 수도 있습니다.
+while (!!입력값.toString()) {
+    // !! 안해주어도 됩니다.
+    let 최솟값 = Math.min(...입력값);
+    정렬된배열.push(최솟값);
+    입력값.splice(입력값.indexOf(최솟값), 1);
+}
+
+console.log(정렬된배열);
+
+// 메서드 최소화된 코드, 새로운 arr를 만들지 않는 코드
+// 최솟값 <-> 현재값
+let 입력값 = [199, 22, 33, 12, 32, 64, 72, 222, 233];
+
+function selectionSort(arr) {
+    // [199, 22, 33, 12, 32, 64, 72, 222, 233]
+    // 첫번째 순회
+    // min_index = 0
+    // 두번째 순회
+    // arr[min_index] > arr[j]
+    // arr[0] > arr[1] -> min_index = 1
+    // arr[1] > arr[2] -> min_index = 1
+    // arr[1] > arr[3] -> min_index = 3
+    // arr[3] > arr[4] -> min_index = 3
+    // arr[3] > arr[5] -> min_index = 3
+    // arr[3] > arr[6] -> min_index = 3
+    // arr[3] > arr[7] -> min_index = 3
+    // arr[0](199) <-> arr[3](12)
+    // 순회가 돌면 돌 수록 최솟값이 앞에 배치되게 된다.
+    for (let i = 0; i < arr.length; i++) {
+        let min_index = i;
+        for (let j = i + 1; j < arr.length; j++) {
+            if (arr[min_index] > arr[j]) {
+                min_index = j;
+            }
+        }
+        let temp = arr[min_index];
+        arr[min_index] = arr[i];
+        arr[i] = temp;
+    }
+    return arr;
+}
+
+console.log(selectionSort(입력값));
+```
+
+### 2.4.3 삽입정렬
+* 삽입정렬은 앞에서부터 차례대로 삽입될 위치를 찾아 끼어들기 하는 정렬입니다.
+
+- step 1
+```
+전 = [199, 22, 33, 12, 32, 64, 72, 222, 233]
+후 = []
+```
+
+- step 2
+```
+전 = [22, 33, 12, 32, 64, 72, 222, 233]
+후 = [199]
+```
+
+- step 3
+```
+전 = [33, 12, 32, 64, 72, 222, 233]
+후 = [22, 199]
+```
+
+- step 4
+```
+전 = [12, 32, 64, 72, 222, 233]
+후 = [22, 33, 199] // 이렇게 껴들려면 껴들 수 있는 index를 알아내야 합니다.
+```
+
+- step 5
+```
+전 = [32, 64, 72, 222, 233]
+후 = [12, 22, 33, 199]
+```
+
+* 구현코드
+```js
+let 입력값 = [199, 22, 33, 12, 32, 64, 72, 222, 233];
+let 정렬된배열 = [];
+let 배열의길이 = 입력값.length;
+
+function 삽입값이_들어갈_인덱스(정렬된배열, 삽입값) {
+    for (const i in 정렬된배열) {
+        if (삽입값 < 정렬된배열[i]) {
+            return i;
+        }
+    }
+    return 정렬된배열.length;
+}
+
+for (let i = 0; i < 배열의길이; i++) {
+    let 삽입값 = 입력값.shift();
+    let 인덱스 = 삽입값이_들어갈_인덱스(정렬된배열, 삽입값);
+    정렬된배열.splice(인덱스, 0, 삽입값);
+}
+
+console.log(정렬된배열);
+
+// 참고만 하고 가도록 하겠습니다.
+function insertIndex(sorted_arr, value) {
+    //삽입될 위치를 찾는 함수
+    for (let i in sorted_arr) {
+        if (value < sorted_arr[i]) {
+            return i;
+        }
+    }
+    return sorted_arr.length;
+}
+
+function insertSort(arr) {
+    let sorted_arr = [];
+
+    while (arr.length != 0) {
+        let value = arr.shift();
+        //삽입될 위치를 반환함
+        let index = insertIndex(sorted_arr, value);
+        //삽입될 위치에 값을 반환
+        sorted_arr.splice(index, 0, value);
+    }
+    return sorted_arr;
+}
+const arr = [199, 22, 33, 12, 32, 64, 72, 222, 233];
+console.log(insertSort(arr));
+
+let 입력값 = [199, 22, 33, 12, 32, 64, 72, 222, 233];
+let 정렬된배열 = [];
+let 배열의길이 = 입력값.length;
+
+function insertIndex(sorted_arr, value) {
+    //삽입될 위치를 찾는 함수
+    for (let i in sorted_arr) {
+        if (value < sorted_arr[i]) {
+            return i;
+        }
+    }
+    return sorted_arr.length;
+}
+
+function insertSort(arr) {
+    let sorted_arr = [];
+
+    while (arr.length != 0) {
+        let [value, ...arr2] = arr;
+        arr = arr2;
+        //삽입될 위치를 반환함
+        let index = insertIndex(sorted_arr, value);
+        //삽입될 위치에 값을 반환
+        sorted_arr.splice(index, 0, value);
+    }
+    return sorted_arr;
+}
+const arr = [199, 22, 33, 12, 32, 64, 72, 222, 233];
+console.log(insertSort(arr));
+```
+
+### 2.4.4 병합정렬
+* 병합정렬은 분할정복 알고리즘으로, 배열을 반으로 나누어 정렬하고 합치는 방식입니다.
+* Worst와 Best 모두 O(nlogn), 어떤 정렬보다 빠름, 동일 할 수 있음
+* 분할 정복(Divide and Conquer)
+
+* step
+```
+// 분할
+[5, 10, 66, 77, 54, 32, 11, 15]
+[5, 10, 66, 77], [54, 32, 11, 15]
+[5, 10], [66, 77], [54, 32], [11, 15]
+[5], [10], [66], [77], [54], [32], [11], [15]
+
+// 정복
+[5, 10], [66, 77], [32, 54], [11, 15]
+[5, 10, 66, 77], [11, 15, 32, 54]
+[5, 10, 11, 15, 32, 54, 66, 77]
+```
+
+* 구현코드
+
+- step 1
+
+```js
+let 입력값 = [5, 10, 66, 77, 54, 32, 11, 15];
+
+function 병합정렬(입력배열) {
+    let 입력배열의길이 = 입력배열.length;
+    if (입력배열의길이 <= 1) {
+        return 입력배열;
+    }
+    let 중간값 = parseInt(입력배열의길이 / 2);
+    // ~~(입력배열의길이 / 2)와 같습니다.
+    let 그룹하나 = 병합정렬(입력배열.slice(0, 중간값));
+    let 그룹둘 = 병합정렬(입력배열.slice(중간값));
+
+    return `그룹하나:${그룹하나}\n그룹둘:${그룹둘}\n\n`;
+}
+
+console.log(병합정렬(입력값));
+```
+
+- step 2
+
+```js
+let 입력값 = [5, 10, 66, 77, 54, 32, 11, 15];
+
+function 병합정렬(입력배열) {
+    //분할
+    let 입력배열의길이 = 입력배열.length;
+    let 결과값 = [];
+    if (입력배열의길이 <= 1) {
+        return 입력배열;
+    }
+    let 중간값 = parseInt(입력배열의길이 / 2);
+    // ~~(입력배열의길이 / 2)와 같습니다.
+    let 그룹하나 = 병합정렬(입력배열.slice(0, 중간값));
+    let 그룹둘 = 병합정렬(입력배열.slice(중간값));
+
+    // return `그룹하나:${그룹하나}\n그룹둘:${그룹둘}\n\n`;
+
+    //정복
+    while (그룹하나.length != 0 && 그룹둘.length != 0) {
+        if (그룹하나[0] < 그룹둘[0]) {
+            결과값.push(그룹하나.shift());
+        } else {
+            결과값.push(그룹둘.shift());
+        }
+    }
+    while (그룹하나.length != 0) {
+        결과값.push(그룹하나.shift());
+    }
+    while (그룹둘.length != 0) {
+        결과값.push(그룹둘.shift());
+    }
+
+    return 결과값;
+}
+
+console.log(병합정렬(입력값));
+```
+
+* 개선 코드
+
+```js
+let 입력값 = [5, 10, 66, 77, 54, 32, 11, 15];
+
+function 병합정렬(입력배열) {
+//분할
+let 입력배열의길이 = 입력배열.length;
+let 결과값 = [];
+if (입력배열의길이 <= 1) {
+    return 입력배열;
+}
+let 중간값 = parseInt(입력배열의길이 / 2);
+// ~~(입력배열의길이 / 2)와 같습니다.
+let 그룹하나 = 병합정렬(입력배열.slice(0, 중간값));
+let 그룹둘 = 병합정렬(입력배열.slice(중간값));
+
+// return `그룹하나:${그룹하나}\n그룹둘:${그룹둘}\n\n`;
+
+//정복
+while (그룹하나.length != 0 && 그룹둘.length != 0) {
+    if (그룹하나[0] < 그룹둘[0]) {
+        결과값.push(그룹하나.shift());
+    } else {
+        결과값.push(그룹둘.shift());
+    }
+}
+
+//개선된 코드
+결과값 = [...결과값, ...그룹하나];
+결과값 = [...결과값, ...그룹둘];
+
+return 결과값;
+}
+
+console.log(병합정렬(입력값));
+```
+
+### 2.4.5 퀵정렬
+- best - O(nlog2n), worst - O(n\*\*2)
+- 피봇값(pivot)을 기준으로 정렬(피봇값은 처음값, 중간값, 마지막 값)
+- 실무에서는 worst일 경우를 피하기 위해 피봇을 랜덤하게 주는 경우나, 피봇을 2개 사용하는 경우도 있음.
+*   step
+    ```
+    // 원본
+    [66, 77, 54, 32, 10, 5, 11, 15]
+
+    // step 1
+    // 피봇값 : 66
+    [54, 32, 10, 5, 11, 15] + [66] + [77]
+
+    // step 2
+    // 피봇값 : 54
+    [32, 10, 5, 11, 15] + [54] + [66] + [77]
+
+    // step 3
+    // 피봇값 : 32
+    [10, 5, 11, 15] + [32] + [54] + [66] + [77]
+
+    // step 4
+    // 피봇값 : 10
+    [5] + [10] + [11, 15] + [32] + [54] + [66] + [77]
+
+    // step 5
+    // 피봇값 : 11
+    [5] + [10] + [11] + [15] + [32] + [54] + [66] + [77]
+
+    [5, 10, 11, 15, 32, 54, 66, 77]
+    ```
+
+*   구현코드
+
+```js
+let 입력값 = [66, 77, 54, 32, 10, 5, 11, 15];
+
+function 퀵정렬(입력배열) {
+    let 입력배열의길이 = 입력배열.length;
+
+    if (입력배열의길이 <= 1) {
+        return 입력배열;
+    }
+
+    let 피벗값 = 입력배열.shift();
+    let 그룹하나 = [];
+    let 그룹둘 = [];
+
+    for (let i in 입력배열) {
+        if (입력배열[i] < 피벗값) {
+            그룹하나.push(입력배열[i]);
+        } else {
+            그룹둘.push(입력배열[i]);
+        }
+    }
+    console.log(
+        `그룹하나 : ${그룹하나}\n그룹둘 : ${그룹둘}\n피벗값 : ${피벗값}\n`
+    );
+
+    return 퀵정렬(그룹하나).concat(피벗값, 퀵정렬(그룹둘));
+}
+
+퀵정렬(입력값);
+```
+
+### 2.4.6 코딩테스트에 나오는 정렬 유형
+
+```js
+data = [
+    [23, 33, 'hello world'],
+    [42, 11, 'hello wo'],
+    [33, 25, 'hello wor'],
+    [11, 12, 'hello worl'],
+    [82, 23, 'hello'],
+]
+
+// 0번째 인덱스로 정렬
+data.sort((a, b) => a[0] - b[0]);
+data.sort((a, b) => b[0] - a[0]);
+
+// 2번째 있는 글자의 글자수로 정렬
+data.sort((a, b) => a[2].length - b[2].length);
+
+
+// 국영수 점수와 이름
+data = [
+    [[23, 33, 44], 'licat'],
+    [[42, 11, 12], 'mura'],
+    [[33, 25, 33], 'binky'],
+    [[11, 12, 11], 'gary'],
+    [[82, 23, 22], 'sun'],
+]
+
+// 국영수 점수의 평균이 가장 높은 사람 순으로 사람만 출력해주세요.
+data.sort((a, b) => b[0].reduce() - a[0].reduce());
+data.sort((a, b) => b[0].reduce((a, c) => a + c, 0) - a[0].reduce((a, c) => a + c, 0));
+const sorted_data = data.sort((a, b) => b[0].reduce((a, c) => a + c, 0) - a[0].reduce((a, c) => a + c, 0));
+
+// 추출은 map입니다.
+sorted_data.map(data => data[1]);
+
+
+
+data = [
+    {name: 'licat', age: 23},
+    {name: 'mura', age: 42},
+    {name: 'binky', age: 33},
+    {name: 'gary', age: 11},
+    {name: 'sun', age: 82}
+]
+
+// age 순서대로 정렬하고 싶을 때
+data.sort((a, b) => a.age - b.age);
+```
+
+* 입사문제로 많이 나오는 데이터 추출 문제
+```
+[
+  {
+    "_id": "b2c4ee1e-7a2c-47af-C027-6ade6be8ea5b",
+    "index": "1",
+    "name": "비태원",
+    "email": "user-co8qr7s@vel.net",
+    "phone": "010-8293-7909",
+    "country": "기니",
+    "address": "뚝섬로 60-1",
+    "job": "에너지공학기술자"
+  },
+  {
+    "_id": "2ef03b96-00b6-4d34-A402-9db92e7e6d79",
+    "index": "2",
+    "name": "석시유",
+    "email": "user-6fvcvay@proin.org",
+    "phone": "010-4813-4314",
+    "country": "이탈리아",
+    "address": "대림로 76-3",
+    "job": "군무원"
+  },
+  {
+    "_id": "dfcf47f4-baa2-4f5e-Ac81-0539556ebf3e",
+    "index": "3",
+    "name": "영지석",
+    "email": "user-yoeagh8@aenean.co.kr",
+    "phone": "010-9256-2158",
+    "country": "쿡 제도",
+    "address": "영등포로 24-8",
+    "job": "물리치료사"
+  }
+].map(data => data.job);
+```
+
+### 2.4.7 코딩테스트 나오는 정렬 문제
+- 링크: https://school.programmers.co.kr/learn/courses/30/lessons/120835
+
+```js
+function solution(emergency){
+    // emergency: [3, 76, 24]
+    // sorted: [76, 24, 3]
+    // 우리가 원하는 값: [3, 1, 2]
+    let sorted = emergency.slice().sort((a, b) => b - a);
+    return emergency.map(data => sorted.indexOf(data) + 1);
+}
+
+solution([3, 76, 24]);
+```
+
 ## 2.5 페이지 교체 알고리즘
+
+* https://www.notion.so/paullabworkspace/db83d9c4bbe6410ea208e6dc2daff07e
+* 페이지 교체 알고리즘 : 메모리를 효율적으로 사용하기 위해서 어떤 데이터를 메모리에 적재할지 결정하는 알고리즘
+* FIFO(오래된 녀석이 가장 빨리 나간다)
+
+```js
+// FIFO(시험에 나오지 않습니다.)
+['망치'] miss 5초
+['망치', '육각렌치'] miss 5초
+['망치', '육각렌치', '십자드라이버'] miss 5초
+// 여기서 망치를 사용한다면?
+['망치', '육각렌치', '십자드라이버'] hit 1초
+// 여기서 톱이 필요하다면?
+['육각렌치', '십자드라이버', '톱'] miss 5초
+
+// LRU(Least Recently Used, 시험에 나옵니다.)
+['망치'] miss 5초
+['망치', '육각렌치'] miss 5초
+['망치', '육각렌치', '십자드라이버'] miss 5초
+// 여기서 망치를 사용한다면?
+['육각렌치', '십자드라이버', '망치'] hit 1초
+// 여기서 만약 톱이 필요하다면?
+['십자드라이버', '망치', '톱'] miss 5초
+```
+
+### 2.5.1 LRU 알고리즘 구현
+* 링크: https://school.programmers.co.kr/learn/courses/30/lessons/17680
+
+```js
+// ["Jeju", "Pangyo", "Jeju", "Pangyo", "Seoul", "LA", "Pangyo", "NewYork"]
+// ["jeju"] miss 5초
+// ["jeju", "pangyo"] miss 5초
+// ["pangyo", "jeju"] hit 1초
+// ["jeju", "pangyo"] hit 1초
+// ["jeju", "pangyo", "seoul"] miss 5초
+// ...
+
+function solution(cacheSize, cities){
+    let time = 0;
+    let cache = [];
+    for (let i = 0; i < cities.length; i++) {
+        let city = cities[i].toLowerCase();
+        let idx = cache.indexOf(city);
+        if (idx !== -1) {
+            //hit
+            cache.splice(idx, 1);
+            cache.push(city);
+            time += 1;
+        } else {
+            //miss
+            cache.push(city);
+            time += 5;
+            if (cache.length > cacheSize) {
+                cache.shift();
+            }
+        }
+    }
+    return time;
+}
+```
+
 ## 2.6 슬라이딩 윈도우와 투 포인터 알고리즘
+
+### 2.6.1 슬라이딩 윈도우 알고리즘
+* 슬라이딩 윈도우: 윈도우 사이즈가 고정되어 있고, 이동하면서 최대값이나 최소값을 찾는 알고리즘
+```js
+// 다음 중 연속된 3개의 합이 10인 것의 쌍을 출력하는 함수를 만들어주세요.
+// 메서드 체이닝으로 간소화 하진 않겠습니다.
+// zip, reduce사용해서 합을 구하고, filter를 사용해서 10인것을 골라낼 것입니다.
+data = [1, 4, 3, 3, 6, 8, 2, 7, 5, 4, 1, 3, 9, 1, 10]
+
+function solution(data){
+    let result = [];
+    for (let i = 0; i < data.length - 2; i++) {
+        let sum = data[i] + data[i + 1] + data[i + 2];
+        if (sum === 10) {
+            result.push([data[i], data[i + 1], data[i + 2]]);
+        }
+    }
+    return result;
+}
+
+solution(data);
+```
+
+### 2.6.2 투 포인터 알고리즘
+* 투 포인터 알고리즘: 2개의 포인터를 이용해서 원하는 결과를 얻는 알고리즘
+```js
+// 다음 중 연속된 데이터의 합이 10인 것의 쌍을 출력하는 함수를 만들어주세요.
+[1, 4, 3, 2, 7, 3, 9, 1, 4, 3, 3, 1]
+```
+
+# 3. 카카오 코딩 테스트 문제 풀이
+
+## 3.1 비밀지도 문제
+
+- 링크: https://programmers.co.kr/learn/courses/30/lessons/17681?language=javascript
+- 주제: 비트 연산, 논리 연산
+
+```
+n	    5
+arr1	[9, 20, 28, 18, 11]
+arr2	[30, 1, 21, 17, 28]
+
+    01001 (9)
+or  11110 (30)
+---------
+    11111 => "#####"
+
+    10100 (20)
+or  00001 (1)
+---------
+    10101 => "# # #"
+
+    11100 (28)
+or  10101 (21)
+---------
+    11101 => "### #"
+
+["#####","# # #", "### #", "# ##", "#####"]
+```
+
+```js
+// step1
+function solution(n, arr1, arr2){
+    const zip = (a, b) => a.map((v, i) => [v, b[i]]);
+    for ([a, b] of zip(arr1, arr2)) {
+        console.log(a, b);
+    }
+}
+solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]);
+
+// step2
+function solution(n, arr1, arr2){
+    const zip = (a, b) => a.map((v, i) => [v, b[i]]);
+    for ([a, b] of zip(arr1, arr2)) {
+        console.log(a | b);
+    }
+}
+solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]);
+
+
+// step3
+function solution(n, arr1, arr2){
+    const result = [];
+    const zip = (a, b) => a.map((v, i) => [v, b[i]]);
+    for ([a, b] of zip(arr1, arr2)) {
+        result.push((a | b).toString(2));
+    }
+    return result;
+}
+solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]);
+
+// step4
+function solution(n, arr1, arr2){
+    const result = [];
+    const zip = (a, b) => a.map((v, i) => [v, b[i]]);
+    for ([a, b] of zip(arr1, arr2)) {
+        result.push((a | b).toString(2).replace(/1/g, '#').replace(/0/g, ' '));
+    }
+    return result;
+}
+solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28]);
+
+// step5
+function solution(n, arr1, arr2) {
+    answer = []
+    for (let i = 0; i < n; i++){
+        answer.push((arr1[i] | arr2[i]).toString(2).padStart(n, '0').replace(/1/g, '#').replace(/0/g, ' '))
+    }
+    return answer
+}
+
+solution(5, [9, 20, 28, 18, 11], [30, 1, 21, 17, 28])
+```
+
+## 3.2 다트게임 문제
+- 링크: https://school.programmers.co.kr/learn/courses/30/lessons/17682
+```js
+// 1S2D3T
+// 1^1 + 2^2 + 3^3
+// 3S2T3T
+// 3^1 + 2^3 + 3^3
+// 1D2S#10S
+// 1^2 + 2^1*(-1) + 10^1
+// 1D2S10S*
+// 1^2 + 2^1*2 + 10^1*2
+
+'1D2S10S*'.match(/(\d+)([SDT])([\*\#]?)/g)
+
+for (let s of '1S2D3T'){
+    console.log(s);
+}
+```
