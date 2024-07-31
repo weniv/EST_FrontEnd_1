@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <script>
+    // 예제2
+    // 쿠키 설정
+    document.cookie = "username=jun; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    
+    // 쿠키 변경
+    document.cookie = "username=juni; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    
+    // 쿠키 추가
+    document.cookie = "age=10";
+    
+    // 쿠키 삭제
+    document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    
+    // 쿠키 읽기
+    console.log(document.cookie)
+    </script>
+</body>
+</html>
