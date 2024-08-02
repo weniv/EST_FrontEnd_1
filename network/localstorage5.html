@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <textarea id="memo" style="width: 100%; height: 300px;"></textarea>
+    <button onclick="saveMemo()">저장</button>
+    <button onclick="loadMemo()">불러오기</button>
+    <script>
+        let s = ''
+        function saveMemo() {
+            const memodata = {};
+            const memo = document.getElementById('memo').value;
+            const date = new Date().toLocaleString();
+
+            memodata.date = date;
+            memodata.memo = memo;
+            
+            // 이렇게 object를 바로 저장해서는 안됩니다!
+            // localStorage.setItem('memo', memodata);
+            // JSON.stringify()를 사용해서 object를 string으로 변환해야 합니다.
+
+            localStorage.setItem('memo', JSON.stringify(memodata));
+
+        }
+        function loadMemo() {
+            const memodata = localStorage.getItem('memo');
+
+            // 이렇게 string을 바로 불러와서는 안됩니다!
+            // s = memodata
+            // console.log(memodata);
+            // const memo = document.getElementById('memo');
+            // JSON.parse()를 사용해서 string을 object로 변환해야 합니다.
+
+            const obj = JSON.parse(memodata);
+            s = obj;
+            console.log(obj);
+        }
+    </script>
+</body>
+</html>

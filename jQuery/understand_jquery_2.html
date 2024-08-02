@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery</title>
+</head>
+<body>
+    <div class="test">hello world</div>
+    <!-- jQuery를 javascript로 직접 만들기 -->
+    <script>
+        function $(selector) {
+            const element = document.querySelector(selector);
+            return {
+                element,
+                css: function (property, value) {
+                    element.style[property] = value;
+                }
+            }
+        }
+        $('.test').css('color', 'red');
+    </script>
+</body>
+</html>

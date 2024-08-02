@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <ul>
+        <li>hello</li>
+        <li>hello</li>
+        <li>hello</li>
+        <li>hello</li>
+        <li>hello</li>
+        <li>hello</li>
+        <li>hello</li>
+        <li>hello</li>
+        <li>hello</li>
+        <li>hello</li>
+    </ul>
+    <script>
+        // 자식으로 넣는 것
+        $('ul').append('<li>list 추가 뒤</li>');
+        $('ul').prepend('<li>list 추가 앞</li>');
+
+        // 형제로 넣는 것
+        $('ul').before('<p>hello</p>');
+        $('ul').after('<p>hello world</p>');
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <ul>
+        <li>hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+        <li class="test">hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+        <li>hello world</li>
+    </ul>
+    <script>
+        const value1 = $(".test")
+        const value2 = document.querySelector(".test")
+        console.log(value1)
+        console.log(value2)
+
+        // value1이 가지고 있는 Object항목에 css로 color를 red로 변경, 이 항목이 value2에는 없습니다.
+        value1.css("color", "red")
+
+        console.log(value1 == value2)
+    </script>
+</body>
+</html>

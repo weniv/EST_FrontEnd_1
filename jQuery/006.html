@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        div {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>안녕하세요</h1>
+    <p><strong>위니브</strong>입니다!</p>
+    <script>
+        console.log($("p").text()); // 위니브입니다!
+        console.log($("p").html()); // <strong>위니브</strong>입니다!
+    </script>
+</body>
+</html>

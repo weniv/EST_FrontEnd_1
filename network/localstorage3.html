@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <!-- 로컬스토리지를 이용한 메모장 작성 -->
+    <!-- 
+        메모에 번호를 넣어서 여러개의 데이터를 저장하고 싶어요.
+        => 데이터를 어떻게 저장할까?
+        => 어떤 자료구조를 사용할까?
+        => 배열, 객체, 맵, 셋, 문자열, class, function, JSON?
+            => 만약 배열을 사용한다면 데이터는 [0, '메모1'], [1, '메모2'], [2, '메모3'] 이런식으로 저장할 수 있을까?
+            => 만약 객체를 사용한다면 데이터는 {0: '메모1', 1: '메모2', 2: '메모3'} 이런식으로 저장할 수 있을까?
+            => 만약 JSON 형태로 사용한다면 데이터는 '[{"id": 0, "memo": "메모1"}, {"id": 1, "memo": "메모2"}, {"id": 2, "memo": "메모3"}]' 이런식으로 저장할 수 있을까?
+            => 문자열로 사용한다면 데이터는 '0: 메모1, 1: 메모2, 2: 메모3' 이런식으로 저장할 수 있을까?
+        => 객체로 저장하는 것을 초이스!
+            => key = memo1
+            => value = '{메모내용: "메모1", 작성일시: "2021-07-01 10:00:00"}'
+    -->
+    <header>
+        <h1>로컬스토리지를 이용한 메모장</h1>
+    </header>
+    <main id="main">
+        <textarea id="memo" style="width: 100%; height: 300px;"></textarea>
+        <button onclick="saveMemo()">저장</button>
+    </main>
+    <script>
+        let id = 0;
+        const main = document.getElementById('main');
+        function saveMemo() {
+            const memo = document.getElementById('memo').value;
+            localStorage.setItem(`memo${id}`, memo);
+            id++;
+
+            const section = document.createElement('section');
+            const h2 = document.createElement('h2');
+            const p = document.createElement('p');
+            const button = document.createElement('button');
+
+            h2.textContent = `메모${id}`;
+            p.textContent = memo;
+            button.textContent = '불러오기';
+
+            section.appendChild(h2);
+            section.appendChild(p);
+            section.appendChild(button);
+            main.appendChild(section);
+        }
+    </script>
+</body>
+</html>

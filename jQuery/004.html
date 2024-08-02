@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jquery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div>
+        1. div
+        <div>
+            2. div
+            <ul>
+                <li>
+                    li
+                    <p>p <strong>strong</strong></p>
+                    <strong>strong <em>em</em></strong>
+                    <p>p <em>em</em></p>
+                </li>
+                <li class="standard">
+                    li.standard
+                    <p>p <strong>strong</strong></p>
+                    <strong>strong <em>em</em></strong>
+                    <p>p <em>em</em></p>
+                </li>
+                <li>
+                    li
+                    <p>p <strong>strong</strong></p>
+                    <strong>strong <em>em</em></strong>
+                    <p>p <em>em</em></p>
+                </li>
+            </ul>
+        </div>
+    </div>
+<script>
+    $('.standard').parent().css('border', '1px solid blue');
+</script>
+</body>
+</html>
