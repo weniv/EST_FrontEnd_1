@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        img {
+            width: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <img src="gary1.png" alt=""> -->
+    <!-- <img srcset="gary1.png 500w,
+    gary2.png 1000w, 
+    gary3.png 2000w" sizes="
+		(max-width: 360px) 200px, 
+		(max-width: 720px) 400px,
+        600px" src="gary1.png" alt="개발자 개구리 개리" /> -->
+
+    <picture>
+        <source media="(min-width: 1024px)" srcset="wenivFriends_wide.png">
+        <img src="wenivFriends.png" alt="개발자 개구리 개리" />
+    </picture>
+
+</body>
+
+</html>

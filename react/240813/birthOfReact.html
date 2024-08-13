@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 렌더링 했을때 실제로 화면에 보이는 구조 -->
+    <h1 class="greeting">
+        Hello <i>재현</i>. Welcome!
+    </h1>
+
+    <script>
+        function greetingJS() {
+            const h1 = document.createElement('h1');
+            h1.setAttribute('class', 'greeting');
+            h1.appendChild(document.createTextNode('Hello'));
+            const elI = document.createElement('i');
+            elI.appendChild(document.createTextNode('재현'));
+            h1.appendChild(elI);
+            h1.appendChild(document.createTextNode('. Welcome!'));
+            return h1;
+        }
+
+        document.body.append(greetingJS());
+
+
+        element.innerHTML = `<h1 class="greeting">
+        Hello <i>재현</i>. Welcome!
+    </h1>`;
+
+        // 리액트로 만드는 돔. JSX가 나오기 이전에 리액트는 아래처럼 돔을 생성했습니다. 여기서 리액트 팀이 라이브 돔을 어떻게 관리하고자 했는지 힌트를 얻을 수 있습니다.
+        function Greeting({ name }) {
+            return createElement(
+                'h1', // 첫번째 인자는 만들 요소의 종류
+                { className: 'greeting' }, // 두 번째 인자는 요소의 프로퍼티
+                'Hello ', // 세번째 인자 이후로는 자식요소.
+                createElement('i', null, name),
+                '. Welcome!'
+            );
+        }
+
+        function GreetingJSX() {
+            return (
+                <h1 class="greeting">
+                    Hello <i>재현</i>. Welcome!
+                </h1>
+            )
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
