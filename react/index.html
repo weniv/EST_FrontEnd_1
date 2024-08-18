@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>버튼</button>
+    <strong>0</strong>
+
+    <script>
+        let num = 0;
+        const btn = document.querySelector('button');
+        const strong = document.querySelector('strong');
+
+        function myEvent() {
+            num += 1;
+            strong.textContent = num;
+        }
+
+        btn.addEventListener('click', myEvent);
+    </script>
+</body>
+
+</html>
