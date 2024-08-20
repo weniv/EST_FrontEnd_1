@@ -1,5 +1,6 @@
 
 import UserList from "./UserList";
+import Counter from "./Counter";
 
 const users = [
   { id: 1, name: 'Alice', email: 'alice@example.com', job: 'Engineer' },
@@ -10,6 +11,7 @@ const users = [
 function App() {
   return (
     <div>
+      <Counter />
       <h1>유저 정보 목록</h1>
       <UserList users={users} />
     </div>
