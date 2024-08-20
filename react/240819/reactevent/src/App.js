@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Login from "./Login";
+import Homepage from "./Homepage";
 
 function App() {
   const user = {
@@ -11,7 +12,7 @@ function App() {
   const [isLogin, setIsLogin] = useState(false);
 
   return (
-    < Login infoUser={user} setLogin={setIsLogin} />
+    isLogin ? <Homepage /> : < Login infoUser={user} setLogin={setIsLogin} />
   )
 
 }

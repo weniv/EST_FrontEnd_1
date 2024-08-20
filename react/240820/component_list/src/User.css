@@ -1,0 +1,10 @@
+dd {
+    overflow: hidden;
+    height: 0;
+    transition: all 0.3s;
+}
+
+dd.active {
+    height: 40px;
+    display: block;
+}

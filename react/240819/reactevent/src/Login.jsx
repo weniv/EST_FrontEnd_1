@@ -18,7 +18,7 @@ export default function Login({ infoUser, setLogin }) {
         }
 
         // 사용자 정보와 입력정보가 일치하는지 확인 하기
-        if (id === infoUser.idUser && pw === infoUser.pwUser) {
+        if (id === infoUser.idUser && Number(pw) === infoUser.pwUser) {
             // 로그인 성공
             setLogin(true);
         }
@@ -26,12 +26,12 @@ export default function Login({ infoUser, setLogin }) {
 
     const handleLoginInput = (e) => {
         console.log("id", e.target.value);
-        // setId(e.target.value);
+        setId(e.target.value);
     };
 
     const handlePasswordInput = (e) => {
         console.log("pw", e.target.value);
-        // setPw(e.target.value);
+        setPw(e.target.value);
     };
 
     return (
