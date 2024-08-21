@@ -1,0 +1,14 @@
+.box {
+    background: pink;
+}
+
+.box p {
+    color: teal;
+}
+
+.text {
+    width: 200px;
+    margin: 0 auto;
+    text-align: center;
+    color: lemonchiffon;
+}
