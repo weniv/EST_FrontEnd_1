@@ -1,0 +1,67 @@
+header {
+    margin-bottom: 96px
+}
+
+.tit-law {
+    display: inline-block;
+    position: relative;
+}
+
+
+.tit-law .img-tit {
+    position: relative;
+    z-index: 10;
+}
+
+
+.tit-law::after {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 225px;
+    height: 225px;
+    margin: -112px 0 0 -112px;
+    background-image: url("../../images-law/title_bg.png");
+    background-position: center;
+}
+
+.img-txt {
+    max-width: 486px;
+    margin: 125px auto 84px;
+}
+
+.txt-desc {
+    position: relative;
+    max-width: 475px;
+    margin: 0 auto;
+    line-height: 30px;
+    font-size: 18px;
+}
+
+.txt-desc .tit-desc {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.txt-desc::before,
+.txt-desc::after {
+    position: absolute;
+    top: 50%;
+    display: block;
+    content: '';
+    width: 37px;
+    height: 32px;
+    margin-top: -16px;
+}
+
+.txt-desc::before {
+    left: 0;
+    background-image: url("../../images-law/txt-left.png");
+}
+
+.txt-desc::after {
+    right: 0;
+    background-image: url("../../images-law/txt-right.png");
+}

@@ -1,0 +1,240 @@
+@font-face {
+    font-family: 'GmarketSansBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Noto Sans KR';
+    font-style: normal;
+    font-weight: 400;
+    src: url("https://fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff2") format('woff2'),
+        url("https://fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff") format('woff'),
+        url("https://fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf") format('opentype');
+}
+
+#app {
+    font-family: GmarketSansMedium;
+    background-color: #5b2386;
+    color: white;
+    text-align: center;
+    padding-top: 194px;
+}
+
+/* 헤더 스타일 시작 */
+header {
+    margin-bottom: 96px
+}
+
+.tit-law {
+    display: inline-block;
+    position: relative;
+}
+
+
+.tit-law .img-tit {
+    position: relative;
+    z-index: 10;
+}
+
+
+.tit-law::after {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 225px;
+    height: 225px;
+    margin: -112px 0 0 -112px;
+    background-image: url("../images-law/title_bg.png");
+    background-position: center;
+}
+
+.img-txt {
+    max-width: 486px;
+    margin: 125px auto 84px;
+}
+
+.txt-desc {
+    position: relative;
+    max-width: 475px;
+    margin: 0 auto;
+    line-height: 30px;
+    font-size: 18px;
+}
+
+.txt-desc .tit-desc {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.txt-desc::before,
+.txt-desc::after {
+    position: absolute;
+    top: 50%;
+    display: block;
+    content: '';
+    width: 37px;
+    height: 32px;
+    margin-top: -16px;
+}
+
+.txt-desc::before {
+    left: 0;
+    background-image: url("../images-law/txt-left.png");
+}
+
+.txt-desc::after {
+    right: 0;
+    background-image: url("../images-law/txt-right.png");
+}
+
+/* 헤더 스타일 끝 */
+
+/* 메인 스타일 시작 */
+main {
+    margin-bottom: 130px;
+}
+
+.cont-inp,
+.cont-result {
+    font-size: 24px;
+    line-height: 24px;
+}
+
+.cont-inp {
+    margin-bottom: 150px;
+}
+
+.cont-inp .txt-wannabe {
+    margin-bottom: 30px;
+}
+
+.cont-inp .txt-time {
+    margin-bottom: 116px;
+}
+
+.cont-inp .txt-wannabe input,
+.cont-inp .txt-time input {
+    width: 224px;
+    height: 53px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 7px;
+    text-align: center;
+    font-size: 24px;
+}
+
+
+.cont-inp .btn-exc {
+    position: relative;
+}
+
+.cont-inp .btn-exc::after {
+    display: block;
+    position: absolute;
+    right: -72px;
+    bottom: -20px;
+    content: '';
+    width: 64px;
+    height: 72px;
+    background-image: url("../images-law/hand.png");
+}
+
+.cont-result .txt-wannabe,
+.cont-result .txt-time {
+    line-height: 68px;
+}
+
+
+.cont-result .txt-wannabe {
+    margin-bottom: 22px;
+}
+
+.cont-result .txt-time {
+    margin-bottom: 127px;
+}
+
+.cont-result .txt-wannabe strong,
+.cont-result .txt-time strong {
+    font-size: 72px;
+    vertical-align: top;
+    font-family: GmarketSansBold;
+}
+
+.btn-share {
+    margin-left: 18px;
+    background-color: #fff;
+}
+
+/* 메인 스타일 끝 */
+
+/* 푸터 스타일 시작 */
+.cont-footer {
+    padding-bottom: 70px;
+    font-family: Noto Sans KR;
+    font-size: 12px;
+    line-height: 17px;
+    text-align: center;
+    background-color: #5b2386;
+    color: #fff;
+}
+
+.cont-footer .img-footer {
+    width: 125px;
+    height: 25px;
+    margin: 0 auto 20px;
+}
+
+/* 푸터 스타일 끝 */
+
+/* 모달 스타일 시작 */
+#modal {
+    width: 800px;
+}
+
+#modal .modal-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 68px 100px;
+    background-color: #FFF;
+    border-radius: 20px;
+    color: #5B2386;
+    text-align: center;
+}
+
+#modal .modal-wrap h2 {
+    font-size: 60px;
+}
+
+#modal .modal-wrap h3 {
+    font-size: 30px;
+}
+
+#modal img {
+    max-width: 342px;
+    margin-bottom: 20px;
+}
+
+#modal .btn-close {
+    box-shadow: 0px 6px 16px 0px rgb(0 0 0 / 15%), 0px 5px 16px 0px rgb(0 0 0 / 15%);
+    margin-bottom: 20px;
+}
+
+#modal p {
+    color: #747474;
+    font-size: 13px;
+}
+
+/* 모달 스타일 끝 */
