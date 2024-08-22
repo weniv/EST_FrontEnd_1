@@ -6,14 +6,25 @@ import Modal from './components/Modal/Modal';
 import { useState } from 'react';
 
 function App() {
-  const [someVal, setSomeVal] = useState(0);
+  const [modalShow, setModalShow] = useState(false);
+
+  console.log(modalShow);
+
+  const modalOpen = () => {
+    setModalShow(true);
+  }
+
+  const modalClose = () => {
+    setModalShow(false);
+  }
+
 
   return (
     <div id="app">
-      <Header someVal={someVal} />
-      <Main />
+      <Header />
+      <Main modalOpen={modalOpen} />
       <Footer />
-      <Modal />
+      <Modal modalShow={modalShow} modalClose={modalClose} />
     </div>
   );
 }

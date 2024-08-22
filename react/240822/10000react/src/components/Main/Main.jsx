@@ -2,7 +2,7 @@ import React from 'react';
 import './Main.css';
 import { useState } from 'react';
 
-export default function Main() {
+export default function Main({ modalOpen }) {
 
     const [field, setField] = useState('');
     const [time, setTime] = useState(0);
@@ -29,7 +29,7 @@ export default function Main() {
                 <h2 className="blind">결과 확인</h2>
                 <p className="txt-wannabe">당신은 <strong>{field}</strong> 전문가가 되기 위해서</p>
                 <p className="txt-time">대략 <strong>{day}</strong>일 이상 훈련하셔야 됩니다.</p>
-                <button type="button" className="btn-go">훈련하러가기 GO!GO!</button>
+                <button type="button" className="btn-go" onClick={modalOpen}>훈련하러가기 GO!GO!</button>
                 <button type="button" className="btn-share">공유하기</button>
             </section>}
         </main>
