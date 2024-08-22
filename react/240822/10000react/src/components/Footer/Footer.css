@@ -1,0 +1,15 @@
+.cont-footer {
+    padding-bottom: 70px;
+    font-family: Noto Sans KR;
+    font-size: 12px;
+    line-height: 17px;
+    text-align: center;
+    background-color: #5b2386;
+    color: #fff;
+}
+
+.cont-footer .img-footer {
+    width: 125px;
+    height: 25px;
+    margin: 0 auto 20px;
+}

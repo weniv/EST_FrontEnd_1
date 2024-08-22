@@ -1,0 +1,74 @@
+main {
+    margin-bottom: 130px;
+}
+
+.cont-inp,
+.cont-result {
+    font-size: 24px;
+    line-height: 24px;
+}
+
+.cont-inp {
+    margin-bottom: 150px;
+}
+
+.cont-inp .txt-wannabe {
+    margin-bottom: 30px;
+}
+
+.cont-inp .txt-time {
+    margin-bottom: 116px;
+}
+
+.cont-inp .txt-wannabe input,
+.cont-inp .txt-time input {
+    width: 224px;
+    height: 53px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 7px;
+    text-align: center;
+    font-size: 24px;
+}
+
+
+.cont-inp .btn-exc {
+    position: relative;
+}
+
+.cont-inp .btn-exc::after {
+    display: block;
+    position: absolute;
+    right: -72px;
+    bottom: -20px;
+    content: '';
+    width: 64px;
+    height: 72px;
+    background-image: url("../../images-law/hand.png");
+}
+
+.cont-result .txt-wannabe,
+.cont-result .txt-time {
+    line-height: 68px;
+}
+
+
+.cont-result .txt-wannabe {
+    margin-bottom: 22px;
+}
+
+.cont-result .txt-time {
+    margin-bottom: 127px;
+}
+
+.cont-result .txt-wannabe strong,
+.cont-result .txt-time strong {
+    font-size: 72px;
+    vertical-align: top;
+    font-family: GmarketSansBold;
+}
+
+.btn-share {
+    margin-left: 18px;
+    background-color: #fff;
+}
