@@ -27,21 +27,45 @@ const Item = styled.div`
 
 export default function NationList() {
     const [nations, setNations] = useState([]);
+    const [url, setUrl] = useState('http://localhost:3000/nations');
+
+    // useEffect(() => {
+    //     fetch('http://localhost:3000/nations')
+    //         .then(response => {
+    //             if (!response.ok) {
+    //                 throw new Error();
+    //             }
+    //             return response.json();
+    //         })
+    //         .then(json => {
+    //             console.log(json);
+    //             return setNations(json);
+    //         })
+    //         .catch(error => console.error('데이터를 가져오는데 문제가 발생했습니다!', error));
+    // }, []);
 
     useEffect(() => {
-        fetch('http://localhost:3000/nations')
-            .then(response => {
+
+        const fetchData = async () => {
+
+            try {
+                const response = await fetch(url);
+
                 if (!response.ok) {
                     throw new Error();
                 }
-                return response.json();
-            })
-            .then(json => {
+
+                const json = await response.json();
+
                 console.log(json);
-                return setNations(json);
-            })
-            .catch(error => console.error('데이터를 가져오는데 문제가 발생했습니다!', error));
-    }, []);
+                setNations(json);
+            } catch (err) {
+                console.error('데이터를 가져오는데 문제가 발생했습니다!', err);
+            }
+        }
+
+        fetchData();
+    }, [url]);
 
 
     return (
@@ -56,8 +80,8 @@ export default function NationList() {
                 })}
             </ul>
             <div>
-                <button>전체목록</button>
-                <button>유럽목록</button>
+                <button onClick={() => { setUrl('http://localhost:3000/nations') }}>전체목록</button>
+                <button onClick={() => { setUrl('http://localhost:3000/nations?loc=europe') }}>유럽목록</button>
             </div>
         </Item>
     )
