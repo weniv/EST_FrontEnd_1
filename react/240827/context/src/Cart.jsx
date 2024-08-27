@@ -1,11 +1,10 @@
 import { useContext } from "react";
 import { useState, createContext } from "react";
+import { useCart } from "./hooks/useCart";
 
 
+export const CartContext = createContext();
 
-const CartContext = createContext();
-
-const useCart = () => useContext(CartContext);
 
 const CartProvider = ({ children }) => {
     // 카트의 상태
@@ -41,7 +40,7 @@ const CartProvider = ({ children }) => {
 
     // 카트에 담겨있는 상품의 총합 구하기
     const getTotalCount = () => {
-
+        return cart.reduce((total, item) => total + item.count, 0);
     }
 
     return (
@@ -53,10 +52,13 @@ const CartProvider = ({ children }) => {
 
 
 const Header = () => {
+
+    const { getTotalCount } = useCart();
+
     return (
         <header>
             <h1>쇼핑몰</h1>
-            <p>카트에 있는 상품의 개수: </p>
+            <p>카트에 있는 상품의 개수: {getTotalCount()}</p>
         </header>
     )
 }
