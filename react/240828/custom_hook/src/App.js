@@ -1,12 +1,16 @@
 import InputComponent from "./InputComponent";
 import SomethingComponent from "./SomethingComponent";
+import useScroll from "./Hook/useScroll";
 
 function App() {
+  useScroll();
+
   return (
-    <div>
+    <div style={{ height: '2000px' }
+    }>
       <InputComponent />
       <SomethingComponent />
-    </div>
+    </div >
   );
 }
 export default App;
