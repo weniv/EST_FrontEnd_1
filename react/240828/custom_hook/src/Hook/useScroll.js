@@ -7,11 +7,11 @@ const useScroll = () => {
     useEffect(() => {
         window.addEventListener('scroll', () => {
 
-            setIsBottom(window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight - 20);
-
-            console.log(isBottom);
+            setIsBottom(window.innerHeight + document.documentElement.scrollTop + 20 >= document.documentElement.offsetHeight);
         });
     }, []);
+
+    console.log(isBottom);
 
     return isBottom;
 }
