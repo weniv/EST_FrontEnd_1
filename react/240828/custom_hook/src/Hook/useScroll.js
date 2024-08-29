@@ -11,8 +11,6 @@ const useScroll = () => {
         });
     }, []);
 
-    console.log(isBottom);
-
     return isBottom;
 }
 

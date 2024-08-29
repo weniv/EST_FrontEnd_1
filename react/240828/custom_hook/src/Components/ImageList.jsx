@@ -5,10 +5,9 @@ export default function ImageList({ imageList }) {
     return (
         <ul>
             {imageList.map((imageInfo) => {
+                console.log(imageInfo);
                 return (
-                    <li key={imageInfo.id}>
-                        {imageInfo && <ImageItem imageInfo={imageInfo} />}
-                    </li>
+                    imageInfo && <li key={imageInfo.id}><ImageItem imageInfo={imageInfo} /></li>
                 )
             })}
         </ul>
