@@ -27,7 +27,8 @@
                 //복제해야 합니다. 그냥 {color:'red'}이런 식으로 리턴해줘도 되긴 하는데 리덕스의 고급기능을 쓰지 못합니다.
                 // Object.assign({}, 빈객체에 복제할 값1, 빈객체에 복제할 값2...);
                 console.log(state)
-                newState = Object.assign({}, state, { color: action.color });
+                // newState = Object.assign({}, state, { color: action.color });
+                newState = { ...state, color: action.color };
             }
             return newState;
         }
@@ -79,7 +80,7 @@
                 </div>
             `;
         }
-        store.subscribe(green);
+        // store.subscribe(green);
         green();
 
     </script>
