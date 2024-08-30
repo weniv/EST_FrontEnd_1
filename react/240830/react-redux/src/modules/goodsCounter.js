@@ -9,7 +9,7 @@ export const minuseNumber = () => {
 
 
 const initialState = {
-    stock: 100,
+    stock: 5,
     goods: 1
 }
 
