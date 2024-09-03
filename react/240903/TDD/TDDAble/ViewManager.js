@@ -12,7 +12,15 @@ class ViewManager {
         this.viewerEl = elements.viewerEl;
         this.textManager = textManager;
 
+        elements.btnEl.addEventListener('click', () => {
+            this.changeValue();
+        });
 
 
+
+    }
+
+    changeValue() {
+        this.textManager.setValue();
     }
 }
