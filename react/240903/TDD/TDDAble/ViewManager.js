@@ -1,5 +1,6 @@
 class ViewManager {
     constructor(textManager, elements) {
+        console.log(elements);
         if (textManager.constructor !== TextManager) {
             throw new Error('textManager 객체가 전달되지 않았습니다.');
         }
@@ -15,12 +16,14 @@ class ViewManager {
         elements.btnEl.addEventListener('click', () => {
             this.changeValue();
         });
-
-
-
     }
 
     changeValue() {
-        this.textManager.setValue();
+        this.textManager.setValue({ data: this.inpEl.value });
+        this.updateView();
+    }
+
+    updateView() {
+        this.viewerEl.textContent = this.textManager.getValue();
     }
 }

@@ -30,6 +30,22 @@
 
     <script src="TextManager.js"></script>
     <script src="ViewManager.js"></script>
+
+    <script>
+        const textManager = new TextManager();
+
+        const container = document.querySelector('article');
+
+        const elements = {
+            inpEl: container.querySelector('.inp-txt'),
+            btnEl: container.querySelector('.btn'),
+            viewerEl: container.querySelector('.viewer')
+        };
+
+        const viewManager = new ViewManager(textManager, elements);
+
+        viewManager.updateView();
+    </script>
 </body>
 
 </html>
