@@ -1,8 +1,9 @@
-
+// 액션 생성자 함수
 export const addNumber = () => {
     return { type: 'ADD' };
 }
 
+// 액션 생성자 함수
 export const minuseNumber = () => {
     return { type: 'MINUS' };
 }
@@ -13,6 +14,7 @@ const initialState = {
     goods: 1
 }
 
+// 리듀서 선언
 const goodsReducer = (state = initialState, action) => {
     switch (action.type) {
         case 'ADD':

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        article {
+            border: 3px solid black;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .viewer {
+            display: block;
+            margin: 50px 0 50px;
+            text-align: center;
+            font-size: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <article>
+        <strong class="viewer">사용자 텍스트</strong>
+        <input type="text" class="inp-txt">
+        <button class="btn" onclick="push()">적용</button>
+    </article>
+
+    <script>
+        let text = 'hello ESTsoft';
+        const viewer = document.querySelector('.viewer');
+        viewer.textContent = text;
+
+        function push() {
+            const input = document.querySelector('.inp-txt');
+            viewer.textContent = input.value;
+        }
+
+        // 모든 기능을 함수로 구현해야합니다.
+        // 실행코드를 UI 에서 분리해야합니다. --> 자바스크립트를 JS 파일로 분리해야합니다.
+        // push함수는 재사용성이 떨어집니다.
+    </script>
+</body>
+
+</html>
