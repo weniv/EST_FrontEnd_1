@@ -9,7 +9,9 @@ const todoDatas = [
     },
 ]
 
-const addTodoData = (todoText:any) =>{
+
+
+const addTodoData = (todoText:string):{id:number; todo:string}[] =>{
     const newTodoId = todoDatas[todoDatas.length-1].id + 1
     const newTodo = {
         id:newTodoId,
@@ -19,30 +21,39 @@ const addTodoData = (todoText:any) =>{
     return todoDatas
 }
 
-const addTodoList = () =>{
-    const $todoInput:any = document.querySelector("#todo-input");
-    const todoText = $todoInput.value;
-    $todoInput.value = "";
-    const todoDatas = addTodoData(todoText);
-    todoListRender(todoDatas);
+const addTodoList = ():void =>{
+    const $todoInput = document.querySelector("#todo-input");
+    if($todoInput !==null && $todoInput instanceof HTMLInputElement){
+        const todoText = $todoInput.value;
+        $todoInput.value = "";
+        const todoDatas = addTodoData(todoText);
+        todoListRender(todoDatas);
+    }
+    else{
+        alert("페이지에 이상이 있습니다.")
+    }
 }
 
-const $todoInputButton:any = document.querySelector("#todo-button");
-$todoInputButton.addEventListener("click",addTodoList);
+const $todoInputButton = document.querySelector("#todo-button");
+$todoInputButton!.addEventListener("click",addTodoList);
+
+const createTodoLi = (todoData:{ id: number; todo: string;}):HTMLLIElement=>{
+    // Li요소를 리턴해야한다.
+    const $todoLi = document.createElement("li");
+    const $todoP = document.createElement("p");
+    $todoP.innerText = todoData.todo;
+    $todoLi.append($todoP);
+    return $todoLi
+}
 
 // 데이터를 넣어주면 todoList를 만들어주는애
-const todoListRender = (todoDatas:any) =>{
-    const $todoContainer:any = document.querySelector("#todo-container");
-    $todoContainer.innerHTML = "";
-    todoDatas.forEach((todoData:any) => {
-        const $todoLi = document.createElement("li");
-        const $todoP = document.createElement("p");
-        $todoP.innerText = todoData.todo;
-        $todoLi.append($todoP);
-        $todoContainer.append($todoLi);
+const todoListRender = (todoDatas:{id: number;todo: string;}[]):void =>{
+    const $todoContainer = document.querySelector("#todo-container");
+    $todoContainer!.innerHTML = "";
+    todoDatas.forEach((todoData) => {
+        const $todoLi = createTodoLi(todoData);
+        $todoContainer!.append($todoLi);
     });
 }
 
 todoListRender(todoDatas);
-
-
