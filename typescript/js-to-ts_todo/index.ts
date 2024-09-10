@@ -1,4 +1,9 @@
-const todoDatas = [
+interface TodoData{
+    id:number;
+    todo:string;
+}
+
+const todoDatas:TodoData[] = [
     {
         id:1,
         todo:"아침먹기",
@@ -9,11 +14,9 @@ const todoDatas = [
     },
 ]
 
-
-
-const addTodoData = (todoText:string):{id:number; todo:string}[] =>{
+const addTodoData = (todoText:string):TodoData[] =>{
     const newTodoId = todoDatas[todoDatas.length-1].id + 1
-    const newTodo = {
+    const newTodo:TodoData = {
         id:newTodoId,
         todo:todoText
     }
@@ -37,7 +40,7 @@ const addTodoList = ():void =>{
 const $todoInputButton = document.querySelector("#todo-button");
 $todoInputButton!.addEventListener("click",addTodoList);
 
-const createTodoLi = (todoData:{ id: number; todo: string;}):HTMLLIElement=>{
+const createTodoLi = (todoData:TodoData):HTMLLIElement=>{
     // Li요소를 리턴해야한다.
     const $todoLi = document.createElement("li");
     const $todoP = document.createElement("p");
@@ -47,7 +50,7 @@ const createTodoLi = (todoData:{ id: number; todo: string;}):HTMLLIElement=>{
 }
 
 // 데이터를 넣어주면 todoList를 만들어주는애
-const todoListRender = (todoDatas:{id: number;todo: string;}[]):void =>{
+const todoListRender = (todoDatas:TodoData[]):void =>{
     const $todoContainer = document.querySelector("#todo-container");
     $todoContainer!.innerHTML = "";
     todoDatas.forEach((todoData) => {
