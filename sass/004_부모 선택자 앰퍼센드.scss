@@ -1,0 +1,26 @@
+// 일반 CSS에서도 네이스팅 + & 사용 가능(23년 10월 즈음에 대부분의 브라우저에서 도입)
+// 대부분의 브라우저에서 도입을 했다하여 실무에서 사용이 가능할까?
+// 회사마다 다릅니다. 포털 입장에서는 0.1%도 매우 큰 수치입니다.
+// 익스플로러는 지원을 안하고, 모바일 쪽도 지원을 아직 안하는 곳이 있어서 사용을 못하는 경우가 있을 수 있습니다.
+// .box {
+//     &:focus{} // 가상선택자
+//     &:hover{}
+//     &:active{}
+//     &:first-child{} 
+//     &:nth-child(2){}
+//     &::after{} // 가상요소
+//     &::before{} 
+// }
+.one {
+    .box {
+        height: 100px;
+        width: 100px;
+        background-color: red;
+        transition: all .3s;
+        &:hover {
+            height: 200px;
+            width: 200px;
+            background-color: blue;
+        }
+    }
+}

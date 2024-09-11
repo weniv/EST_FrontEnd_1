@@ -1,0 +1,64 @@
+.photo-box:nth-child(1) {
+  background-image: url("../assets/phoster1.png");
+}
+
+.photo-box:nth-child(2) {
+  background-image: url("../assets/phoster2.png");
+}
+
+.photo-box:nth-child(3) {
+  background-image: url("../assets/phoster3.png");
+}
+
+.photo-box:nth-child(4) {
+  background-image: url("../assets/phoster4.png");
+}
+
+.photo-box:nth-child(5) {
+  background-image: url("../assets/phoster5.png");
+}
+
+.photo-box:nth-child(10) {
+  background-image: url("../assets/img_10.png");
+}
+
+.photo-box:nth-child(11) {
+  background-image: url("../assets/img_11.png");
+}
+
+.photo-box:nth-child(12) {
+  background-image: url("../assets/img_12.png");
+}
+
+.photo-box:nth-child(13) {
+  background-image: url("../assets/img_13.png");
+}
+
+.photo-box:nth-child(14) {
+  background-image: url("../assets/img_14.png");
+}
+
+.photo-box:nth-child(15) {
+  background-image: url("../assets/img_15.png");
+}
+
+.test {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+.test:nth-child(1) {
+  background-image: url("127.0.0.1/assets/img/1.png");
+}
+.test:nth-child(2) {
+  background-image: url("127.0.0.1/assets/img/2.png");
+}
+.test:nth-child(3) {
+  background-image: url("127.0.0.1/assets/img/3.png");
+}
+.test:nth-child(4) {
+  background-image: url("127.0.0.1/assets/img/4.png");
+}
+.test:nth-child(5) {
+  background-image: url("127.0.0.1/assets/img/5.png");
+}/*# sourceMappingURL=026_반복문.css.map */

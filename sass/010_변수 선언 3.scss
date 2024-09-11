@@ -1,0 +1,13 @@
+$value: blue;
+
+.one {
+    // 지역 변수
+    $value: red;
+    .two {
+        color: $value;
+    }
+}
+
+.three {
+    color: $value;
+}

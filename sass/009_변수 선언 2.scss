@@ -1,0 +1,109 @@
+// 실무에서 이런 변수를 어디서 사용할까요?
+// 예를 들어
+// 1. 경로명
+// 2. 폰트명
+// 3. 색상
+// 4. 파일명
+// 5. 폰트 사이즈, 여백, 미디어 쿼리의 넓이, 높이 등등
+
+$path: './asset/images/';
+$name: 'apple1.png';
+
+// .test {
+//   background-image: url('#{$path}#{$name}');
+// }
+
+// .test {
+//     background-image: url('hello' + $path + $name);
+// }
+
+.test {
+    background-image: url($path + $name);
+}
+
+//색상
+$red: #ee4444;
+$black: #222;
+$bg-color: #3e5e9e;
+$link-color: red;
+$p-color: #282A36;
+
+//폰트사이즈
+$font-p: 13px;
+$font-h1: 28px;
+
+//폰트
+$base-font: 'Noto Sans KR', sans-serif;
+
+// lists
+$sizes: 40px, 50px, 80px;
+$valid-sides: top, bottom, left, right;
+
+//maps
+$font-sizes: (
+    "h1": 45px,
+    "h2": 19px,
+    "p": 16px
+);
+$font-sizes-test: (
+    "one": #fff,
+    "two": #ff0,
+    "three": #f00
+);
+
+// 0부터 시작하지 않습니다.
+.title1 {
+    font-size: nth($sizes, 1);
+}
+
+// 마이너스 인덱싱도 가능합니다.
+.title2 {
+    font-size: nth($sizes, -1);
+}
+
+.title3 {
+    font-size: map-get($font-sizes, "h2");
+}
+
+.title4 {
+    font-size: map-get($font-sizes-test, "three");
+}
+
+// 문제 입니다. 아래와 같이 CSS가 만들어지도록 SCSS를 만들어주세요. 컴파일된 모습이 아래 모습과 같아져야 합니다. 위에서 배운 변수를 사용해야 합니다.
+// .test1 {
+//     font-size: 45px;
+//     background-color: #f00;
+// }
+
+.test1 {
+    font-size: map-get($font-sizes, "h1");
+    background-color: map-get($font-sizes-test, "three");
+}
+
+// test2 {
+//     margin-top: 40px;
+//     margin-bottom: 40px;
+//     background-color: #f00;
+// }
+
+// .test2 {
+//     margin-top: nth($sizes, 1);
+//     margin-bottom: nth($sizes, 1);
+//     background-color: map-get($font-sizes-test, "three");
+// }
+
+//$valid-sides: top, bottom, left, right;
+.test2 {
+    margin-#{nth($valid-sides, 1)}: nth($sizes, 1);
+    margin-#{nth($valid-sides, 2)}: nth($sizes, 1);
+    background-color: map-get($font-sizes-test, "three");
+}
+
+// .test2 {
+//     // nth를 함수로 인식하지 못하고 있습니다. nth를 함수로 인식하게 하려면 nth를 한 번 감싸주어야 합니다.
+//     margin-nth($valid-sides, 1): nth($sizes, 1);
+//     margin-nth($valid-sides, 2): nth($sizes, 1);
+//     background-color: map-get($font-sizes-test, "three");
+// }
+
+

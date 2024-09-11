@@ -1,0 +1,14 @@
+$value: blue;
+
+.one {
+    // 전역 변수가 되었습니다.
+    // 권장하지 않고, 잘 사용하지도 않습니다.
+    $value: red !global;
+    .two {
+        color: $value;
+    }
+}
+
+.three {
+    color: $value;
+}

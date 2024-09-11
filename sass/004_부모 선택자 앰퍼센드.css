@@ -1,0 +1,11 @@
+.one .box {
+  height: 100px;
+  width: 100px;
+  background-color: red;
+  transition: all 0.3s;
+}
+.one .box:hover {
+  height: 200px;
+  width: 200px;
+  background-color: blue;
+}/*# sourceMappingURL=004_부모 선택자 앰퍼센드.css.map */

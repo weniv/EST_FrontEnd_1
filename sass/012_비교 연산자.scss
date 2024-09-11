@@ -1,0 +1,37 @@
+// https://sass-lang.com/playground
+
+@debug 100 > 50; // true
+@debug 10px <= 17px; // true
+@debug 10px == 17px; // false
+@debug 10px != 17px; // true
+@debug 96px >= 30px; // true
+@debug 1000ms <= 1s; // true
+
+// 숫자
+@debug 1px == 1px; // true
+@debug 1px != 1em; // true
+@debug 1 != 1px; // true
+@debug 96px == 1in; // true
+
+// 문자
+@debug "Poppins" == Poppins; // true
+@debug "Open Sans" != "Roboto"; // true
+
+// 색상
+@debug rgba(53, 187, 169, 1) == #35bba9; // true
+@debug rgba(179, 115, 153, 0.5) != rgba(179, 115, 153, 0.8); // true
+
+// 리스트
+// (5px 7px 10px)와 (5px, 7px, 10px)은 같은 리스트인데 동일한 형태로 표현되지는 않습니다. (5px 7px 10px) 각각의 개별 값으로 처리됩니다. (5px, 7px, 10px) 리스트 안에 리스트로 처리됩니다.
+// (5px, 7px, 10px)과 [5px, 7px, 10px] 동일하게 처리됩니다.
+
+// 1. 하나는 콤마가 없고, 하나는 있습니다. 그래서 다르게 처리됩니다.
+@debug (5px 7px 10px) != (5px, 7px, 10px); // true
+
+// 하나가 대괄호여서 주석처리 해놓은 것입니다. 괄호만 다른 것이지 동일한 매서드로 처리가 가능합니다.
+// @debug (5px 7px 10px) != [5px 7px 10px]; // true
+
+// 괄호와 값과 콤마여부가 동일해서 true입니다.
+@debug (5px 7px 10px) == (5px 7px 10px); // true
+
+// @debug nth([5px 7px 10px], 1); 동일하게 실행 됩니다.
