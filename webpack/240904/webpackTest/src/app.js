@@ -1,11 +1,11 @@
 import plus from "./plus.js";
 import './styles.css';
 // const style = require('./styles.css');
-import rabbit from './images.png';
+import rabbit from './rabbit_large.webp';
 
-// document.addEventListener('DOMContentLoaded', () => {
-//     document.body.innerHTML = `<img src=${rabbit}>`;
-// });
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.innerHTML = `<img src=${rabbit}>`;
+});
 
 let env;
 console.log(process.env.NODE_ENV);
