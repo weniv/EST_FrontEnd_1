@@ -18,11 +18,9 @@ const Todo = () => {
   const props = { todoList, handleInput, todoText, handleButton };
   return isLoading ? <h1>로딩중 페이지</h1> : (
   <TodoView>
-    <>
       <TodoList todoList={todoList}/>
       <TodoInput todoText={todoText} handleInput={handleInput}/>
       <AddTodoButton handleButton={handleButton}/>
-    </>
   </TodoView>
   );
 };

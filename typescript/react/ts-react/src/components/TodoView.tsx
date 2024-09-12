@@ -6,7 +6,7 @@ interface TodoViewProps{
   handleInput: (e: ChangeEvent<HTMLInputElement>) => void;
   todoText: string;
   handleButton: ()=>void;
-  children:JSX.Element;
+  children:React.ReactNode;
 }
 
 
