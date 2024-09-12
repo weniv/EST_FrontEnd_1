@@ -1,4 +1,15 @@
-const TodoView = ({ todoList, handleInput, todoText, handleButton }) => {
+import { ChangeEvent } from "react";
+import { TodoItem } from "../hooks/todoHook";
+
+interface TodoViewProps{
+  todoList: TodoItem[];
+  handleInput: (e: ChangeEvent<HTMLInputElement>) => void;
+  todoText: string;
+  handleButton: ()=>void;
+}
+
+
+const TodoView:React.FC<TodoViewProps> = ({ todoList, handleInput, todoText, handleButton }) => {
   return (
     <div>
       <h1>멋진 투두</h1>

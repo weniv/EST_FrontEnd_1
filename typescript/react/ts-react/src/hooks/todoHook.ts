@@ -1,8 +1,15 @@
 import { useEffect, useState } from "react";
+export interface TodoItem {
+  id:string,
+  todo:string
+}
 
-function useTodoData() {
+
+// 튜플 배열같은애인데 길이랑, 각 위치의 타입이 정해져있어요.
+// let arr:[number,string,number] = [1,'23',1]
+function useTodoData():[TodoItem[],(todoText:string)=>void, boolean] {
   const [isLoading, setIsLoading] = useState(false);
-  const [todoList, setTodoList] = useState([]);
+  const [todoList, setTodoList] = useState<TodoItem[]>([]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -15,7 +22,7 @@ function useTodoData() {
         setTodoList(todoData);
       });
   }, []);
-  const postTodo = (todoText) => {
+  const postTodo = (todoText:string):void => {
     setIsLoading(true)
     const newTodo = {
       todo: todoText,
