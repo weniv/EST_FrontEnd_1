@@ -1,13 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TodoView from "./TodoView";
 
 const Todo = () => {
-  const [todoList, setTodoList] = useState([
-    { id: "1", todo: "아침먹기" },
-    { id: "2", todo: "점심먹기" },
-  ]);
-
+  const [todoList, setTodoList] = useState([]);
   const [todoText, setTodoText] = useState("");
+  useEffect(() => {
+    fetch("http://localhost:3300/todos")
+      .then((res) => {
+        return res.json();
+      })
+      .then((todoData) => {
+        setTodoList(todoData);
+      });
+  }, []);
+
   const handleInput = (e) => {
     const newTodoText = e.target.value;
     setTodoText(newTodoText);
