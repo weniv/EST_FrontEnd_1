@@ -1,8 +1,25 @@
-import logo from "./logo.svg";
-import "./App.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-function Todo(props) {
+const TodoView = ({ todoList, handleInput, todoText, handleButton }) => {
+  return (
+    <div>
+      <h1>멋진 투두</h1>
+      <ul>
+        {todoList.map((todoItem) => (
+          <li key={todoItem.id}>
+            <p>{todoItem.todo}</p>
+          </li>
+        ))}
+      </ul>
+      <input type="text" value={todoText} onChange={handleInput} />
+      <button type="button" onClick={handleButton}>
+        투두추가
+      </button>
+    </div>
+  );
+};
+
+const Todo = () => {
   const [todoList, setTodoList] = useState([
     { id: "1", todo: "아침먹기" },
     { id: "2", todo: "점심먹기" },
@@ -28,23 +45,9 @@ function Todo(props) {
     });
   };
 
-  return (
-    <div>
-      <h1>멋진 투두</h1>
-      <ul>
-        {todoList.map((todoItem) => (
-          <li key={todoItem.id}>
-            <p>{todoItem.todo}</p>
-          </li>
-        ))}
-      </ul>
-      <input type="text" value={todoText} onChange={handleInput} />
-      <button type="button" onClick={handleButton}>
-        투두추가
-      </button>
-    </div>
-  );
-}
+  const props = { todoList, handleInput, todoText, handleButton };
+  return <TodoView {...props} />;
+};
 
 function App() {
   return <Todo />;
