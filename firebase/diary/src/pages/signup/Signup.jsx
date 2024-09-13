@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
 import styles from '../login/Login.module.css';
+import { useSignup } from '../../hooks/useSignup';
 
 export default function Signup() {
-    const [id, setId] = useState('');
+    const [email, setEmail] = useState('');
     const [pw, setPw] = useState('');
     const [displayName, setDisplayName] = useState('');
 
+    const [error, isPending, signup] = useSignup();
+
     const handleData = (event) => {
         if (event.target.type === 'email') {
-            setId(event.target.value);
+            setEmail(event.target.value);
         } else if (event.target.type === 'password') {
             setPw(event.target.value);
         } else if (event.target.type === 'text') {
@@ -18,7 +21,8 @@ export default function Signup() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log(id, pw);
+        signup(email, pw, displayName);
+        console.log(email, pw);
     }
 
 
@@ -86,12 +90,12 @@ export default function Signup() {
 
             <form className={styles["form-wrap"]} onSubmit={handleSubmit}>
                 <label className="label-style" htmlFor="user-email">이메일</label>
-                <input onChange={handleData} className="input-style" id="user-email" type="email" value={id} required autoComplete='email' />
+                <input onChange={handleData} className="input-style" id="user-email" type="email" value={email} required autoComplete='email' />
 
                 <label className="label-style" htmlFor="user-pw">비밀번호</label>
                 <input onChange={handleData} className="input-style" id="user-pw" type="password" value={pw} required autoComplete='current-password' />
 
-                <label className="label-style" htmlfor="user-nickname">닉네임</label>
+                <label className="label-style" htmlFor="user-nickname">닉네임</label>
                 <input onChange={handleData} className="input-style" id="user-nickname" type="text" value={displayName} required />
 
 
