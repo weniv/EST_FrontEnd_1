@@ -1,4 +1,5 @@
-import { createContext, useReducer, useState } from 'react';
+import { createContext, useEffect, useReducer, useState } from 'react';
+import { appAuth } from '../firebase/config';
 
 
 const AuthContext = createContext();
@@ -20,8 +21,24 @@ const authReducer = (state, action) => {
 
 const AuthContextProvider = ({ children }) => {
 
-    // const [value, setValue] = useState();
+
     const [state, dispatch] = useReducer(authReducer, { user: null, isAuthReady: false });
+
+    // 유저의 로그인 상태를 관찰하는 옵저버를 붙입니다.
+    useEffect(() => {
+        const unsubscribe = appAuth.onAuthStateChanged((user) => {
+
+            // if (user) {
+            dispatch({ type: 'authIsReady', payload: user });
+            // }
+        })
+
+        return () => {
+            unsubscribe();
+        }
+
+    }, []);
+
 
     console.log('context: ', state);
 

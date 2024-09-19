@@ -14,10 +14,6 @@ export const useLogin = () => {
     // 전역 context 에서 dispatch 함수를 받아옵니다.
     const { dispatch } = useAuthContext();
 
-    console.log(appAuth.currentUser);
-    setInterval(() => {
-        console.log(appAuth.currentUser);
-    }, 1000);
 
     const login = (email, password) => {
         setIsPending(true);
