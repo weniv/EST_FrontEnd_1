@@ -31,6 +31,7 @@ export const useSignup = () => {
                     .then(() => {
                         dispatch({ type: 'login', payload: user });
                         setIsPending(false);
+                        setError(null);
                     }).catch((error) => {
                         setError(error);
                         console.error(error);

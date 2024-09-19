@@ -5,7 +5,7 @@ import { appAuth } from "../firebase/config";
 import { useAuthContext } from './useAuthContext';
 
 
-const useLogout = () => {
+export const useLogout = () => {
 
     // 에러상태를 관리합니다.
     const [error, setError] = useState(null);
@@ -17,12 +17,19 @@ const useLogout = () => {
     const { dispatch } = useAuthContext();
 
     const logout = () => {
+        setIsPending(true);
+
         signOut(appAuth).then(() => {
-            // Sign-out successful.
+            dispatch({ type: 'logout' });
+            setIsPending(false);
+            setError(null);
         }).catch((error) => {
-            // An error happened.
+
+            setIsPending(false);
+            setError(error.message);
+            console.error(error.message);
         });
     }
 
-    return [logout]
+    return [logout, error, isPending];
 }
