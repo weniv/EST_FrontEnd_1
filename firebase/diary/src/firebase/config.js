@@ -18,4 +18,5 @@ const appfireStore = getFirestore(app);
 
 const appAuth = getAuth();
 
+
 export { appfireStore, appAuth }

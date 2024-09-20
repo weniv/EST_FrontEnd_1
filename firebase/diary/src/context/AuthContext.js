@@ -27,10 +27,7 @@ const AuthContextProvider = ({ children }) => {
     // 유저의 로그인 상태를 관찰하는 옵저버를 붙입니다.
     useEffect(() => {
         const unsubscribe = appAuth.onAuthStateChanged((user) => {
-
-            // if (user) {
             dispatch({ type: 'authIsReady', payload: user });
-            // }
         })
 
         return () => {

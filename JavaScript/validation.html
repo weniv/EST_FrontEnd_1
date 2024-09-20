@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input:valid {
+            background-color: green;
+        }
+
+        input:invalid {
+            background-color: red;
+        }
+
+        input:required::before {}
+    </style>
+</head>
+
+<body>
+    <form>
+        <input type="email" required>
+        <button>제출하기</button>
+    </form>
+
+    <script>
+        const inp = document.querySelector('input');
+        const btn = document.querySelector('button');
+
+        btn.addEventListener('click', callBack);
+
+        function callBack() {
+
+        }
+
+        // console.log(inp.validity);
+        // inp.setCustomValidity('잠시만요 다시 생각해보세요. 뭔가 잘못됐어요!!');
+
+        function validation(targetInp) {
+            console.log(targetInp.validity);
+
+            if (targetInp.validity.valueMissing) {
+                targetInp.setCustomValidity('데이터가 입력되지 않았습니다!');
+            }
+            if (targetInp.validity.patternMismatch) {
+                targetInp.setCustomValidity('대문자와 특수기호 하나 이상을 포함하는 비밀번호를 사용하셔야합니다.');
+            }
+
+            targetInp.setCustomValidity('');
+        }
+    </script>
+</body>
+
+</html>
